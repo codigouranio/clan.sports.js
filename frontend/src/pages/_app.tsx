@@ -9,7 +9,7 @@ function MyApp({ Component, pageProps }: AppProps) {
   return
     <Provider store={store}>
       <Component {...pageProps} />
-    </Provider>  
+    </Provider>
 }
 
 export default MyApp

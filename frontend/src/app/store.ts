@@ -6,8 +6,8 @@ const reducer = {}
 export function makeStore() {
   return configureStore({
     reducer,
-    middleware: (getDefaultMiddleware) => 
-      getDefaultMiddleware()  
+    middleware: (getDefaultMiddleware) =>
+      getDefaultMiddleware()
         .concat(logger)
   })
 }
@@ -26,4 +26,3 @@ export type AppThunk<ReturnType = void> = ThunkAction<
 >
 
 export default store
-

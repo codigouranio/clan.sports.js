@@ -2,16 +2,16 @@ import type { NextPage } from 'next'
 import Head from 'next/head'
 import Image from 'next/image'
 import styles from '../styles/Home.module.css'
-import { useGetTestQuery } from '../app/testapi'
+import { testApi } from '../app/testapi'
 
 const Home: NextPage = () => {
  
-  const { data, error, isLoading } = useGetTestQuery('alejo')
-
+  const { data, error, isLoading } = testApi.useGetTestQuery('alejo')
+  
   return (
     <div className={styles.container}>
-      
-      <h1>{2}</h1>
+
+      <h1>{JSON.stringify({ data, error, isLoading })}</h1>
 
       <Head>
         <title>Create Next App</title>

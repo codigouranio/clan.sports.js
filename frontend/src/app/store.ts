@@ -10,6 +10,7 @@ export function makeStore() {
     middleware: (getDefaultMiddleware) => 
       getDefaultMiddleware()  
         .concat(logger)
+        .concat(testApi.middleware)
   })
 }
 

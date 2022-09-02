@@ -8,7 +8,7 @@ export class AppController {
   @Get()
   getTest(
     @Query('id') id: any
-  ): string {
+  ): any {
     return this.appService.getTest(id);
   }
 }

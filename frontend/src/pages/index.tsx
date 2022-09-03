@@ -6,7 +6,7 @@ import { testApi } from '../app/testapi'
 
 const Home: NextPage = () => {
  
-  const { data, error, isLoading } = testApi.useGetTestQuery('alejo')
+  const { data, error, isLoading } = testApi.useGetTestQuery('Pepe!')
   
   return (
     <div className={styles.container}>

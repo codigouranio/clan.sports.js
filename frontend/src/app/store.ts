@@ -28,4 +28,3 @@ export type AppThunk<ReturnType = void> = ThunkAction<
 >
 
 export default store
-

@@ -5,8 +5,12 @@ const nextConfig = {
   rewrites: () => {
     return [
       {
-        source: '/app',
-        destination: 'http://172.16.23.170:3001'
+        source: '/app/:path*',
+        destination: 'http://172.16.23.170:3001/:path*'
+      }, 
+      {
+        source: '/google',
+        destination: 'http://www.google.com'
       }
     ]
   }

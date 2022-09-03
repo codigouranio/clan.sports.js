@@ -1,14 +1,16 @@
 import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit'
 import logger from 'redux-logger'
-
-const reducer = {}
+import { testApi } from './testapi'
 
 export function makeStore() {
   return configureStore({
-    reducer,
-    middleware: (getDefaultMiddleware) =>
-      getDefaultMiddleware()
+    reducer: {
+      [testApi.reducerPath]: testApi.reducer
+    },
+    middleware: (getDefaultMiddleware) => 
+      getDefaultMiddleware()  
         .concat(logger)
+        .concat(testApi.middleware)
   })
 }
 

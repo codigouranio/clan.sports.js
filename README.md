@@ -13,17 +13,17 @@ mostrar todos y cada uno de sus logros deportivos durante su etapa juvenil dando
     validez a dicho certificado</li>
 </ul>
 
-[comment]:<>(Primer posible mensaje de brindar nuestros servicios)
+<!-- Primer posible mensaje de brindar nuestros servicios -->
 <p>Clan Sports queremos brindar a nuestros usuarios una plataforma que desea cumplir como una red social donde
 su hijo o hija gestionara sus logros academicos deportivos.
 Asi podremos brindar la oprotunidad de que esto sirva para que instituciones educativas conozcan su desempeño
 y con ayuda de <strong>Clan Sports</strong> brindar la facilidad de contacto con nuestra plataforma y que el niño o niña
 crezca tanto personalmente y profesionalmente en su vida.</p>
 
-[comment]:<>(Segundo posible mensaje de brindar nuestros servicios)
+<!-- Segundo posible mensaje de brindar nuestros servicios -->
 <em><strong>Clan Sports</strong> queremos brindar tanto a niños y niñas, padres de familia, instituciones deportivas
 la facilidad de comprobar, conocer sobre el desempeño, logros y reconocimientos que cada uno de los niños o niñas
-han logrado con su esfuerzo. Creemos firmemente que cada niño de U.S esta dando lo mejor de si mismo para crecer y 
+han logrado con su esfuerzo. Creemos firmemente que cada niño de U.S esta dando lo mejor de si mismo para crecer y
 disfrutar de su deporte favorito, es por eso que es momento de darlos a conocer y incluso apoyar al crecimiento
 del niño o niña.</em>
 

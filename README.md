@@ -3,9 +3,6 @@
 </h1>
 
 ## Project Description
-**Clan Sports** es un proyecto que desarrollado por la comunidad de @codigouranio que busca brindar la oportunidad a un niño y niña, de
-mostrar todos y cada uno de sus logros deportivos durante su etapa juvenil dando a conocer objetivos como:
-
 **Clan Sports** is a project developed by the @codigouranio/clan.sports community that seeks to provide the opportunity for the 
 children's, to show each and everyone of your sporting achievements during your youth stage, revealing goals: 
 

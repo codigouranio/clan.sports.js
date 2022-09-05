@@ -8,7 +8,7 @@ children's, to show each and everyone of your sporting achievements during your 
 
 - Competitive Goals
 - Images where there was an important participation by you or your children's
-- Support and publicize their recognitons validated by the sports institutions that validate and certificate said
+- Support and publicize their recognitions validated by the sports institutions that validate and certificate said
 
 <!-- Primer posible mensaje de brindar nuestros servicios -->
 **Clan Sports** we want to provide our users a platform, which you want to fulfill as a social network where you or 

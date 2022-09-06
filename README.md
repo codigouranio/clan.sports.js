@@ -1,5 +1,5 @@
 <h1 align="Center">
-<img src="Readme_Files/Clan_Sports_banner_ReadmeMD.png" alt="Clan Sports">
+<img src="readme_files/Clan_Sports_banner_ReadmeMD.png" alt="Clan Sports">
 </h1>
 
 ## Project Description

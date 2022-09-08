@@ -28,11 +28,7 @@ sea lanzado y demostrado por primera vez empezaremos a plantearnos actualizacion
 We are analyzing possible new features. Because this project starting to develop. When this project is released for
 first time, we will start considering more features and updates.
 
-<<<<<<< HEAD
-<h1 align="Center"><strong>COMING SON!!!</strong></h1>
-=======
 <h1 align="Center"><strong>COMING SOON!!!!</strong></h1>
->>>>>>> 867e7bd... readme file version 7.1, correction in Features
 
 
 

@@ -6,8 +6,8 @@
     "dev": "next dev -H 172.16.23.170 -p 3000",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint --ext js,jsx,ts,tsx src/ --fix",
     "storybook": "start-storybook -p 6006",
+    "lint": "eslint --ext js,jsx,ts,tsx --fix --ignore-path .gitignore .",
     "build-storybook": "build-storybook"
   },
   "dependencies": {
@@ -18,7 +18,8 @@
     "react-dom": "18.2.0",
     "react-redux": "8.0.2",
     "redux-logger": "3.0.6",
-    "redux-persist": "6.0.0"
+    "redux-persist": "^6.0.0",
+    "redux-thunk": "^2.4.1"
   },
   "devDependencies": {
     "@babel/core": "7.18.13",

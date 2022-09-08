@@ -5,9 +5,8 @@ import styles from '../styles/Home.module.css'
 import { testApi } from '../app/testapi'
 
 const Home: NextPage = () => {
- 
   const { data, error, isLoading } = testApi.useGetTestQuery('Pepe!')
-  
+
   return (
     <div className={styles.container}>
 

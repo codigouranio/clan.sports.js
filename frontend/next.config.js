@@ -9,7 +9,7 @@ const nextConfig = {
     return [
       {
         source: '/app/:path*',
-        destination: 'http://172.16.23.170:3001/:path*'
+        destination: 'http://localhost:3001/:path*'
       },
       {
         source: '/google',

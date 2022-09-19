@@ -28,7 +28,7 @@ sea lanzado y demostrado por primera vez empezaremos a plantearnos actualizacion
 We are analyzing possible new features. Because this project starting to develop. When this project is released for
 first time, we will start considering more features and updates.
 
-<h1 align="Center"><strong>COMING SON!!!</strong></h1>
+<h1 align="Center"><strong>COMING SOON!!!!</strong></h1>
 
 
 

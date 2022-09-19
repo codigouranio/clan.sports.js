@@ -38,5 +38,5 @@ node. And then it is required to run backend and frontend separately.
 * _frontend_: npm run dev
 * _services_: npm run start
 
-Once all is running, you can browse to your port 3000 from your local IP. 
+Once all is running, you can browse to port 3000 from your local IP. 
 

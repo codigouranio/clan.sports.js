@@ -30,5 +30,13 @@ first time, we will start considering more features and updates.
 
 <h1 align="Center"><strong>COMING SOON!!!!</strong></h1>
 
+## How to run
 
+There are two 2 components: a frontend Next.js and backend Nest.js. In order to run it locally, you need install 
+node. And then it is required to run backend and frontend separately. 
+
+* _frontend_: npm run dev
+* _services_: npm run start
+
+Once all is running, you can browse to your port 3000 from your local IP. 
 

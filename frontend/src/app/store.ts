@@ -1,14 +1,42 @@
 import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit'
 import logger from 'redux-logger'
+import { testApi } from './testapi'
+import { appDataSlice, AppDataSlice } from './appData'
+import storage from 'redux-persist/lib/storage'
+import thunk from 'redux-thunk'
+import {
+  persistStore,
+  persistReducer,
+  FLUSH,
+  REHYDRATE,
+  PAUSE,
+  PERSIST,
+  PURGE,
+  REGISTER
+} from 'redux-persist'
+const persistConfig = {
+  key: 'root',
+  version: 1,
+  storage
+}
 
-const reducer = {}
+const persistedReducer = persistReducer(persistConfig, appDataSlice.reducer)
 
 export function makeStore() {
   return configureStore({
-    reducer,
-    middleware: (getDefaultMiddleware) => 
-      getDefaultMiddleware()  
+    reducer: {
+      [testApi.reducerPath]: testApi.reducer,
+      root: persistedReducer
+    },
+    middleware: (getDefaultMiddleware) =>
+      getDefaultMiddleware({
+        serializableCheck: {
+          ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER]
+        }
+      })
         .concat(logger)
+        .concat(thunk)
+        .concat(testApi.middleware)
   })
 }
 
@@ -26,4 +54,3 @@ export type AppThunk<ReturnType = void> = ThunkAction<
 >
 
 export default store
-

@@ -6,8 +6,12 @@ export default new DataSource({
   database: './mydb.sql',
   dropSchema: true,
   synchronize: true,
-  migrations: ['dist/migrations/*.ts'],
-  entities: ['dist/**/*.entity.ts'],
+  migrations: ['db/*.ts'],
+  entities: ['src/*.entity.ts'],
   migrationsTableName: 'migrations_typeorm',
   migrationsRun: true,
+  cli: {
+    entitiesDir: 'src',
+    migrationsDir: 'db',
+  },
 });

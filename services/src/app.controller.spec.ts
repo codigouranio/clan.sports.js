@@ -1,18 +1,18 @@
 import { INestApplication } from '@nestjs/common';
 import { Test, TestingModule } from '@nestjs/testing';
+import { TypeOrmModule } from '@nestjs/typeorm';
+import { DataSource } from 'typeorm';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { TypeOrmModule } from '@nestjs/typeorm';
-import { UserService } from './user.service';
 import { UserModule } from './user.module';
-import { DataSource } from 'typeorm';
+import { UserService } from './user.service';
 
 describe.only('AppController', () => {
+  let app: INestApplication;  
   let appController: AppController;
-  let app: INestApplication;
   let userService: UserService;
 
-  beforeEach(async () => {
+  beforeAll(async () => {
     const module: TestingModule = await Test.createTestingModule({
       imports: [
         TypeOrmModule.forRootAsync({
@@ -52,7 +52,7 @@ describe.only('AppController', () => {
   });
 
   describe('root', () => {
-    it('should return "Hello World!"', async () => {
+    it('Test User repository', async () => {
       expect(appController).toBeDefined();
       expect(userService).toBeDefined();
 
@@ -60,7 +60,10 @@ describe.only('AppController', () => {
       console.log(resp);
       let resp2 = await userService.test2();
       console.log(resp2);
-      // expect(appController.getTest("hola")).toHaveProperty("msg", "Hello World! hola");
+    });
+
+    it ('Test App controller', async () => {
+      expect(appController.getTest("hola")).toHaveProperty("msg", "Hello World! hola");
     });
   });
 });

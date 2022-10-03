@@ -1,8 +1,8 @@
 {
   "name": "services",
-  "version": "0.0.1",
-  "description": "",
-  "author": "",
+  "version": "0.1.0",
+  "description": "Backend Services",
+  "author": "group@codigouranio",
   "private": true,
   "license": "UNLICENSED",
   "scripts": {

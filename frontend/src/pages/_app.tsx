@@ -4,13 +4,16 @@ import { persistStore } from 'redux-persist'
 import { Provider } from 'react-redux'
 
 import store from '../app/store'
+import { ChakraProvider } from '@chakra-ui/react'
 
 const persistor = persistStore(store)
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <Provider store={store}>
-      <Component {...pageProps} />
+      <ChakraProvider>
+        <Component {...pageProps} />
+      </ChakraProvider>
     </Provider>
   )
 }

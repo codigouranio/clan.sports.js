@@ -1,4 +1,10 @@
-export const parameters = {
+import { muiTheme } from 'storybook-addon-material-ui'
+
+const decorators = [
+  muiTheme()
+]
+
+const parameters = {
   actions: { argTypesRegex: "^on[A-Z].*" },
   controls: {
     matchers: {
@@ -7,3 +13,4 @@ export const parameters = {
     },
   },
 }
+export { decorators, parameters }

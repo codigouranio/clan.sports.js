@@ -15,13 +15,13 @@ export class UserService {
   async addUser(newUser: CreateUserDto): Promise<User>  {
     const user = await this.repo.findOneBy({ username: newUser.username });
     if (user) return;
-    const addedUser = await this.repo.save(newUser);
-    return addedUser;
+    const resp: User = await this.repo.save(newUser);
+    return resp;
   }
 
   async updateUser(userId: number, updateUser: User) {
-    // const user: User = await this.repo.findOneBy({ id: userId });
-    // if (!user) return;
+    const user: User = await this.repo.findOneBy({ id: userId });
+    if (!user) return;
     const resp: UpdateResult = await this.repo.update({ id: userId }, updateUser);
     return resp;
   }
@@ -35,20 +35,5 @@ export class UserService {
 
   async findOne(userId: number): Promise<User> {
     return this.repo.findOne({ where: { id: userId } });
-  }
-
-  async test(): Promise<InsertResult> {
-    let resp: InsertResult = await this.repo.insert({
-      username: "hola", 
-      password: "hola", 
-      firstName: "hola", 
-      lastName: "hola"
-    });
-    return resp;
-  }
-
-  async test2(): Promise<User[]> {
-    let resp: User[] = await this.repo.find();
-    return resp;
   }
 }

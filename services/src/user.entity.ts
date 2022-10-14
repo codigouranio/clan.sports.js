@@ -17,6 +17,27 @@ export class User {
   @Column()
   lastName: string;
 
+  @Column()
+  email: string;
+
+  @Column()
+  phone: string;
+
+  @Column()
+  streeAddress: string;
+
+  @Column()
+  postalCode: string;
+
+  @Column()
+  addressCountry: string;
+
+  @Column()
+  addressState: string;
+
+  @Column()
+  photo: string;
+
   @Column({ default: true })
   isActive: boolean;
 }

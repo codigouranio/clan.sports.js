@@ -30,6 +30,7 @@
     "@nestjs/typeorm": "^9.0.1",
     "@types/bindings": "^1.5.1",
     "better-sqlite3": "^7.6.2",
+    "class-validator": "^0.13.2",
     "dotenv": "^16.0.2",
     "reflect-metadata": "^0.1.13",
     "rimraf": "^3.0.2",

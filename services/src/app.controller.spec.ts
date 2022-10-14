@@ -7,7 +7,7 @@ import { AppService } from './app.service';
 import { UserModule } from './user.module';
 import { UserService } from './user.service';
 
-describe.only('AppController', () => {
+describe('AppController', () => {
   let app: INestApplication;  
   let appController: AppController;
   let userService: UserService;
@@ -56,10 +56,10 @@ describe.only('AppController', () => {
       expect(appController).toBeDefined();
       expect(userService).toBeDefined();
 
-      let resp = await userService.test();
-      console.log(resp);
-      let resp2 = await userService.test2();
-      console.log(resp2);
+      // let resp = await userService.test();
+      // console.log(resp);
+      // let resp2 = await userService.test2();
+      // console.log(resp2);
     });
 
     it ('Test App controller', async () => {

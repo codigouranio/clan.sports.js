@@ -1,17 +1,19 @@
-import '../styles/globals.css'
 import type { AppProps } from 'next/app'
-import { persistStore } from 'redux-persist'
-import { Provider } from 'react-redux'
 
+// Redux
+import { Provider } from 'react-redux'
 import store from '../app/store'
+
+// ChakraUI
 import { ChakraProvider } from '@chakra-ui/react'
 
-const persistor = persistStore(store)
+// Theme
+import theme from '../styles/theme'
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <Provider store={store}>
-      <ChakraProvider>
+      <ChakraProvider theme={theme}>
         <Component {...pageProps} />
       </ChakraProvider>
     </Provider>

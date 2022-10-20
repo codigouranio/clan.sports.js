@@ -12,7 +12,7 @@ export class UserService {
     private repo: Repository<User>,
   ) {}
 
-  async addUser(newUser: CreateUserDto): Promise<User>  {
+  async addUser(newUser: CreateUserDto): Promise<User> {
     const user = await this.repo.findOneBy({ username: newUser.username });
     if (user) return;
     const resp: User = await this.repo.save(newUser);
@@ -22,7 +22,10 @@ export class UserService {
   async updateUser(userId: number, updateUser: User) {
     const user: User = await this.repo.findOneBy({ id: userId });
     if (!user) return;
-    const resp: UpdateResult = await this.repo.update({ id: userId }, updateUser);
+    const resp: UpdateResult = await this.repo.update(
+      { id: userId },
+      updateUser,
+    );
     return resp;
   }
 

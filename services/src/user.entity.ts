@@ -1,21 +1,43 @@
-import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
+import { Entity, Column, PrimaryGeneratedColumn, Index } from 'typeorm';
 
 @Entity()
 export class User {
   @PrimaryGeneratedColumn()
-  id: number;
+  id?: number;
 
+  @Index()
   @Column()
   username: string;
 
-  @Column()
-  password: string;
+  @Column({ nullable: true })
+  password?: string;
+
+  @Column({ nullable: true })
+  firstName?: string;
+
+  @Column({ nullable: true })
+  lastName?: string;
 
   @Column()
-  firstName: string;
+  email: string;
 
-  @Column()
-  lastName: string;
+  @Column({ nullable: true })
+  phone?: string;
+
+  @Column({ nullable: true })
+  streeAddress?: string;
+
+  @Column({ nullable: true })
+  postalCode?: string;
+
+  @Column({ nullable: true })
+  addressCountry?: string;
+
+  @Column({ nullable: true })
+  addressState?: string;
+
+  @Column({ nullable: true })
+  photo?: string;
 
   @Column({ default: true })
   isActive: boolean;

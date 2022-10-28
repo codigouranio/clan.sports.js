@@ -6,8 +6,7 @@
     },
     "extends": [
         "plugin:react/recommended",
-        "standard",
-        "next"
+        "standard"
     ],
     "settings": {
         "react": {"version": "detect"}
@@ -34,6 +33,7 @@
         "react/jsx-uses-react": "error",
         "react/jsx-uses-vars": "error",
         "react/no-unescaped-entities": "off",
-        "@next/next/no-page-custom-font": "off"
+        "@next/next/no-page-custom-font": "off",
+        "no-console": "warn"
     }
 }

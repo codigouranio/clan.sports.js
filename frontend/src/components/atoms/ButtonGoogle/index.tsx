@@ -10,7 +10,13 @@ interface Props {
     marginBottom?: string | number
   }
 
-export const ButtonGoogle: React.FC<Props> = ({ margin, marginTop, marginRight, marginLeft, marginBottom }) => {
+export const ButtonGoogle: React.FC<Props> = ({
+  margin,
+  marginTop,
+  marginRight,
+  marginLeft,
+  marginBottom
+}) => {
   return (
      <Button
       colorScheme="clan"

@@ -2,21 +2,9 @@
 const nextConfig = {
   reactStrictMode: true,
   swcMinify: true,
-  eslints: {
-
+  experimental: {
+    appDir: true,
   },
-  rewrites: () => {
-    return [
-      {
-        source: '/app/:path*',
-        destination: 'http://localhost:3001/:path*'
-      },
-      {
-        source: '/google',
-        destination: 'http://www.google.com'
-      }
-    ]
-  }
-}
+};
 
-module.exports = nextConfig
+module.exports = nextConfig;

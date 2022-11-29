@@ -1,7 +1,22 @@
 {
   "name": "frontend",
-  "version": "0.1.0",
   "private": true,
+  "version": "0.1.0",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/codigouranio/clan.sports.git"
+  },
+  "keywords": [
+    "social-network",
+    "sports",
+    "business-solutions"
+  ],
+  "author": "codigouranio",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/codigouranio/clan.sports/issues"
+  },
+  "homepage": "https://github.com/codigouranio/clan.sports#readme",
   "scripts": {
     "dev": "next dev -H 0.0.0.0 -p 3000",
     "build": "next build",

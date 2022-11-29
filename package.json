@@ -1,0 +1,24 @@
+{
+  "name": "clan.sports",
+  "private": true,
+  "version": "0.1.0",
+  "description": "Clan Sports is a project developed by the @codigouranio/clan.sports community that seeks to provide the opportunity for the children's, to show each and everyone of your sporting achievements during your youth stage",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/codigouranio/clan.sports.git"
+  },
+  "keywords": [
+    "social-network",
+    "sports",
+    "business-solutions"
+  ],
+  "author": "codigouranio",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/codigouranio/clan.sports/issues"
+  },
+  "homepage": "https://github.com/codigouranio/clan.sports#readme",
+  "workspaces": [
+    "packages/*"
+  ]
+}

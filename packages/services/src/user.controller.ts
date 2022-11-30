@@ -4,45 +4,29 @@ import { UserService } from './user.service';
 
 @Controller()
 export class UserController {
-    constructor(private readonly service: UserService) {}
+  constructor(private readonly service: UserService) {}
 
-    @Post()
-    addUser(@Body() createUser: CreateUserDto) {
+  @Post()
+  addUser(@Body() createUser: CreateUserDto) {}
 
-    }
+  @Get()
+  getUser() {}
 
-    @Get()
-    getUser() {
+  @Delete()
+  removeUser() {}
 
-    }
+  @Put()
+  updateUser() {}
 
-    @Delete()
-    removeUser() {
+  @Post()
+  validateUsername() {}
 
-    }
+  @Post()
+  createPassword() {}
 
-    @Put()
-    updateUser() {
+  @Delete()
+  deletePassword() {}
 
-    }
-
-    @Post()
-    validateUsername() {
-
-    }
-
-    @Post()
-    createPassword() {
-
-    }
-
-    @Delete() 
-    deletePassword() {
-
-    }
-
-    @Post()
-    activateUser() {
-
-    }
+  @Post()
+  activateUser() {}
 }

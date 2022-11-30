@@ -8,7 +8,7 @@ import { UserModule } from './user.module';
 import { UserService } from './user.service';
 
 describe('AppController', () => {
-  let app: INestApplication;  
+  let app: INestApplication;
   let appController: AppController;
   let userService: UserService;
 
@@ -30,14 +30,14 @@ describe('AppController', () => {
               entitiesDir: './',
               migrationsDir: './db',
             },
-            autoLoadEntities: true,            
+            autoLoadEntities: true,
           }),
           dataSourceFactory: async (options) => {
             const dataSource = await new DataSource(options).initialize();
             return dataSource;
-          },          
+          },
         }),
-        UserModule
+        UserModule,
       ],
       controllers: [AppController],
       providers: [AppService],
@@ -62,8 +62,11 @@ describe('AppController', () => {
       // console.log(resp2);
     });
 
-    it ('Test App controller', async () => {
-      expect(appController.getTest("hola")).toHaveProperty("msg", "Hello World! hola");
+    it('Test App controller', async () => {
+      expect(appController.getTest('hola')).toHaveProperty(
+        'msg',
+        'Hello World! hola',
+      );
     });
   });
 });

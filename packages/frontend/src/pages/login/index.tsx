@@ -1,9 +1,7 @@
-import { Heading } from '@chakra-ui/react'
+import { Heading } from '@chakra-ui/react';
 
 const LoginPage = () => {
-  return (
-    <Heading>Login Page</Heading>
-  )
-}
+  return <Heading>Login Page</Heading>;
+};
 
-export default LoginPage
+export default LoginPage;

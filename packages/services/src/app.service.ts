@@ -4,7 +4,7 @@ import { Injectable } from '@nestjs/common';
 export class AppService {
   getTest(id: any): any {
     return {
-      msg: `Hello World! ${id}`
-    }
+      msg: `Hello World! ${id}`,
+    };
   }
 }

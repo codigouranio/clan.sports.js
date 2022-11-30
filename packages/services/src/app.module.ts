@@ -25,16 +25,16 @@ import { DataSource } from 'typeorm';
           entitiesDir: './',
           migrationsDir: './db',
         },
-        autoLoadEntities: true,            
+        autoLoadEntities: true,
       }),
       dataSourceFactory: async (options) => {
         const dataSource = await new DataSource(options).initialize();
         return dataSource;
-      },          
+      },
     }),
-    UserModule
+    UserModule,
   ],
   controllers: [AppController],
-  providers: [AppService],  
+  providers: [AppService],
 })
 export class AppModule {}

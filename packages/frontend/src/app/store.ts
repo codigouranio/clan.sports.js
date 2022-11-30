@@ -1,9 +1,9 @@
-import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit'
-import logger from 'redux-logger'
-import { testApi } from './testapi'
-import { appDataSlice, AppDataSlice } from './appData'
-import storage from 'redux-persist/lib/storage'
-import thunk from 'redux-thunk'
+import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit';
+import logger from 'redux-logger';
+import { testApi } from './testapi';
+import { appDataSlice, AppDataSlice } from './appData';
+import storage from 'redux-persist/lib/storage';
+import thunk from 'redux-thunk';
 import {
   persistStore,
   persistReducer,
@@ -12,45 +12,45 @@ import {
   PAUSE,
   PERSIST,
   PURGE,
-  REGISTER
-} from 'redux-persist'
+  REGISTER,
+} from 'redux-persist';
 const persistConfig = {
   key: 'root',
   version: 1,
-  storage
-}
+  storage,
+};
 
-const persistedReducer = persistReducer(persistConfig, appDataSlice.reducer)
+const persistedReducer = persistReducer(persistConfig, appDataSlice.reducer);
 
 export function makeStore() {
   return configureStore({
     reducer: {
       [testApi.reducerPath]: testApi.reducer,
-      root: persistedReducer
+      root: persistedReducer,
     },
     middleware: (getDefaultMiddleware) =>
       getDefaultMiddleware({
         serializableCheck: {
-          ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER]
-        }
+          ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
+        },
       })
         .concat(logger)
         .concat(thunk)
-        .concat(testApi.middleware)
-  })
+        .concat(testApi.middleware),
+  });
 }
 
-const store = makeStore()
+const store = makeStore();
 
-export type AppState = ReturnType<typeof store.getState>
+export type AppState = ReturnType<typeof store.getState>;
 
-export type AppDispatch = typeof store.dispatch
+export type AppDispatch = typeof store.dispatch;
 
 export type AppThunk<ReturnType = void> = ThunkAction<
   ReturnType,
   AppState,
   unknown,
   Action<string>
->
+>;
 
-export default store
+export default store;

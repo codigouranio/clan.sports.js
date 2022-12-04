@@ -1,15 +1,15 @@
 // React
 import React, { ChangeEvent, useState } from 'react'
 
-// Chackra
+// Chakra
 import { Input } from '@chakra-ui/react'
 
 // Helpers
 import { expressions } from 'src/const/regularexpressions'
 
 interface Props {
-    type: 'mail' | 'password' | 'name' | 'user' | 'phone'
-    placeholder: string
+  type: 'mail' | 'password' | 'name' | 'user' | 'phone'
+  placeholder: string
 }
 
 interface StateInput {
@@ -44,7 +44,7 @@ export const InputComponent: React.FC<Props> = ({ type, placeholder }) => {
           })
         } else {
           setInput({
-            ...input,
+          ...input,
             validation: false
           })
         }

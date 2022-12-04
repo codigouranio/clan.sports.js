@@ -2,8 +2,8 @@ import React from 'react'
 import { HeadComponent } from '../atoms/Head'
 
 interface Props {
-    children: React.ReactNode
-  }
+  children: React.ReactNode
+}
 
 export const MainLayout:React.FC<Props> = ({ children }) => {
   return (
@@ -13,6 +13,5 @@ export const MainLayout:React.FC<Props> = ({ children }) => {
           {children}
         </main>
       </div>
-
   )
 }

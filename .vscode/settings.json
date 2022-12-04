@@ -1,0 +1,31 @@
+{
+  // Language settings.
+  "json.format.enable": false,
+  "html.format.enable": false,
+
+  // Editor settings.
+  "editor.codeActionsOnSave": {
+    "source.fixAll": true
+  },
+  "editor.formatOnSave": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+
+  // Emmet languages.
+  "emmet.includeLanguages": {
+    "javascript": "javascriptreact",
+    "typescript": "typescriptreact"
+  },
+
+  // ESLint settings.
+  "eslint.enable": true,
+  "eslint.format.enable": false,
+  "eslint.onIgnoredFiles": "off",
+
+  // Prettier settings.
+  "prettier.enable": true,
+  "prettier.requireConfig": true,
+  "prettier.useEditorConfig": false,
+  "prettier.configPath": "./.prettierrc.js",
+  "prettier.ignorePath": "./.prettierignore",
+  "prettier.withNodeModules": false
+}

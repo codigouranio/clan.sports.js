@@ -48,6 +48,7 @@
   },
   "devDependencies": {
     "@babel/core": "^7.20.2",
+    "@chakra-ui/icons": "2.0.11",
     "@storybook/addon-actions": "^6.5.13",
     "@storybook/addon-essentials": "^6.5.13",
     "@storybook/addon-interactions": "^6.5.13",
@@ -63,7 +64,8 @@
     "eslint-config-next": "13.0.4",
     "eslint-plugin-storybook": "^0.6.7",
     "eslint-plugin-testing-library": "^5.9.1",
-    "jest-environment-jsdom": "28.1.0"
+    "jest-environment-jsdom": "28.1.0",
+    "react-icons": "4.6.0"
   },
   "prettier": {
     "singleQuote": true,

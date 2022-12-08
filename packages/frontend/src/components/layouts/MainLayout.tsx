@@ -1,5 +1,5 @@
 import React from 'react';
-import { HeadComponent } from '../atoms/Head';
+import { HeadComponent } from '../atoms';
 
 interface Props {
   children: React.ReactNode;

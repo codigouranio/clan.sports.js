@@ -36,7 +36,7 @@ coverage
 !.vscode/launch.json
 !.vscode/extensions.json
 
-# sqlite
+# Sqlite
 *.sql-shm
 *.sql-wal
 mydb.sql
@@ -64,3 +64,6 @@ build
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# assets
+assets

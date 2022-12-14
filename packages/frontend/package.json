@@ -66,9 +66,5 @@
     "eslint-plugin-testing-library": "^5.9.1",
     "jest-environment-jsdom": "28.1.0",
     "react-icons": "4.6.0"
-  },
-  "prettier": {
-    "singleQuote": true,
-    "trailingComma": "all"
   }
 }

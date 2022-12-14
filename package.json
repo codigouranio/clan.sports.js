@@ -27,7 +27,8 @@
     "frontend:test": "npm run test --workspace=frontend",
     "frontend:test:ci": "npm run test:ci --worspace=frontend",
     "frontend:storybook": "npm run storybook --worspace=frontend",
-    "frontend:build-storybook": "npm run build-storybook --workspace=frontend"
+    "frontend:build-storybook": "npm run build-storybook --workspace=frontend",
+    "prepare": "husky install"
   },
   "repository": {
     "type": "git",
@@ -53,7 +54,9 @@
   "devDependencies": {
     "eslint": "8.28.0",
     "eslint-config-prettier": "^8.3.0",
+    "husky": "^8.0.2",
     "jest": "28.1.3",
+    "lint-staged": "^13.1.0",
     "prettier": "^2.3.2",
     "typescript": "4.9.3"
   }

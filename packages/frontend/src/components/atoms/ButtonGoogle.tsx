@@ -1,5 +1,5 @@
-import React from 'react';
 import { Button, Icon } from '@chakra-ui/react';
+import React from 'react';
 import { FcGoogle } from 'react-icons/fc';
 
 interface Props {

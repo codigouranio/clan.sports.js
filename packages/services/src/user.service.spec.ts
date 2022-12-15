@@ -2,6 +2,7 @@ import { ConsoleLogger, INestApplication } from '@nestjs/common';
 import { Test, TestingModule } from '@nestjs/testing';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { DataSource } from 'typeorm';
+
 import { AppController } from './app.controller';
 import { User } from './user.entity';
 import { UserModule } from './user.module';

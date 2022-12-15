@@ -1,18 +1,16 @@
-import React, { useState } from 'react';
-
 //Chakra UI
 import {
-  Input,
-  InputLeftElement,
-  InputGroup,
-  Icon,
-  InputRightElement,
   Button,
+  Icon,
+  Input,
+  InputGroup,
+  InputLeftElement,
+  InputRightElement,
 } from '@chakra-ui/react';
-
+import React, { useState } from 'react';
+import { HiEye, HiEyeOff } from 'react-icons/hi';
 //Icons
 import { RiLockPasswordFill } from 'react-icons/ri';
-import { HiEye, HiEyeOff } from 'react-icons/hi';
 
 interface Props {
   margin?: string | number;

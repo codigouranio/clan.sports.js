@@ -1,5 +1,5 @@
-import React from 'react';
 import { Icon, Input, InputGroup, InputLeftElement } from '@chakra-ui/react';
+import React from 'react';
 import { BiUser } from 'react-icons/bi';
 
 interface Props {

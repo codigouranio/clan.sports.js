@@ -8,11 +8,10 @@ import { UserModule } from './user.module';
 import { UserService } from './user.service';
 
 describe.only('Test User Service', () => {
-
-  let app: INestApplication;  
+  let app: INestApplication;
   let appController: AppController;
   let userService: UserService;
-    
+
   beforeAll(async () => {
     const module: TestingModule = await Test.createTestingModule({
       imports: [
@@ -31,14 +30,14 @@ describe.only('Test User Service', () => {
               entitiesDir: './',
               migrationsDir: './db',
             },
-            autoLoadEntities: true,            
+            autoLoadEntities: true,
           }),
           dataSourceFactory: async (options) => {
             const dataSource = await new DataSource(options).initialize();
             return dataSource;
-          },          
+          },
         }),
-        UserModule
+        UserModule,
       ],
       controllers: [],
       providers: [],
@@ -59,7 +58,7 @@ describe.only('Test User Service', () => {
       firstName: 'Jose',
       lastName: 'Bernal',
       email: 'pepe@micasa.mx',
-      isActive: true
+      isActive: true,
     };
     const user2: User = await userService.addUser(user1);
 

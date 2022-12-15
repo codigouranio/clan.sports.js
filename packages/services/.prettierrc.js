@@ -1,3 +1,6 @@
 const baseConfig = require('../../.prettierrc.js');
 
-module.exports = { ...baseConfig };
+module.exports = {
+  ...baseConfig,
+  importOrderParserPlugins: ['typescript', 'decorators-legacy'],
+};

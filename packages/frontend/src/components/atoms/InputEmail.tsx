@@ -1,7 +1,6 @@
-import React from 'react';
-
 // Chakra
 import { Icon, Input, InputGroup, InputLeftElement } from '@chakra-ui/react';
+import React from 'react';
 //Icons
 import { MdEmail } from 'react-icons/md';
 

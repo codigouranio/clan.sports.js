@@ -1,12 +1,10 @@
-import type { AppProps } from 'next/app';
-
-// Redux
-import { Provider } from 'react-redux';
-import store from '../app/store';
-
 // ChakraUI
 import { ChakraProvider } from '@chakra-ui/react';
+import type { AppProps } from 'next/app';
+// Redux
+import { Provider } from 'react-redux';
 
+import store from '../app/store';
 // Theme
 import theme from '../styles/theme';
 

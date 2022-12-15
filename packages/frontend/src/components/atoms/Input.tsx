@@ -1,9 +1,7 @@
 // React
-import React, { ChangeEvent, useState } from 'react';
-
 // Chakra
 import { Input } from '@chakra-ui/react';
-
+import React, { ChangeEvent, useState } from 'react';
 // Helpers
 import { expressions } from 'src/const/regularexpressions';
 

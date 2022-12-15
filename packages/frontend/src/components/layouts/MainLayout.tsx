@@ -1,4 +1,5 @@
 import React from 'react';
+
 import { HeadComponent } from '../atoms';
 
 interface Props {

@@ -1,18 +1,16 @@
-import React from 'react';
-
+// Chakra
+import { Box, Button, Center, Text } from '@chakra-ui/react';
 // Next
 import { NextPage } from 'next';
 import Image from 'next/image';
-import logo from '../../../public/logo_cs_negro.svg';
-
-// Chakra
-import { Box, Button, Center, Text } from '@chakra-ui/react';
+import React from 'react';
 // Icons
 import { FiLogIn } from 'react-icons/fi';
-
+import { ButtonGoogle, InputEmail, InputPassword } from 'src/components/atoms';
 // Components
 import { MainLayout } from 'src/components/layouts';
-import { ButtonGoogle, InputEmail, InputPassword } from 'src/components/atoms';
+
+import logo from '../../../public/logo_cs_negro.svg';
 
 const LoginPage: NextPage = () => {
   return (

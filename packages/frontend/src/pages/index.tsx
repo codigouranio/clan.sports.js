@@ -1,8 +1,6 @@
-import type { NextPage } from 'next';
-
 //--Chakra-Ui
 import { Heading } from '@chakra-ui/react';
-
+import type { NextPage } from 'next';
 //--Layout
 import { MainLayout } from 'src/components/layouts';
 

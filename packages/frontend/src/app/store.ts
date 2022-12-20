@@ -1,19 +1,21 @@
-import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit';
+import { Action, ThunkAction, configureStore } from '@reduxjs/toolkit';
 import logger from 'redux-logger';
-import { testApi } from './testapi';
-import { appDataSlice, AppDataSlice } from './appData';
-import storage from 'redux-persist/lib/storage';
-import thunk from 'redux-thunk';
 import {
-  persistStore,
-  persistReducer,
   FLUSH,
-  REHYDRATE,
   PAUSE,
   PERSIST,
   PURGE,
   REGISTER,
+  REHYDRATE,
+  persistReducer,
+  persistStore,
 } from 'redux-persist';
+import storage from 'redux-persist/lib/storage';
+import thunk from 'redux-thunk';
+
+import { AppDataSlice, appDataSlice } from './appData';
+import { testApi } from './testapi';
+
 const persistConfig = {
   key: 'root',
   version: 1,

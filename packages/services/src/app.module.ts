@@ -1,12 +1,13 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { DataSource } from 'typeorm';
+
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { UserController } from './user.controller';
-import { UserService } from './user.service';
 import { User } from './user.entity';
 import { UserModule } from './user.module';
-import { DataSource } from 'typeorm';
+import { UserService } from './user.service';
 
 @Module({
   imports: [

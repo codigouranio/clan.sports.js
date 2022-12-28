@@ -2,44 +2,38 @@
 <img src="readme_files/Clan_Sports_banner_ReadmeMD.png" alt="Clan Sports">
 </h1>
 
-## Project Description
+[![License MIT](./readme_files/license-mit.svg)](https://github.com/codigouranio/clan.sports/blob/main/LICENSE)
 
-**Clan Sports** is a project developed by the @codigouranio/clan.sports community that seeks to provide the opportunity for the
-children's, to show each and everyone of your sporting achievements during your youth stage, revealing goals:
+Clan Sports is a **social network** that offers sports activities and showcases the achievements of children and
+adolescents in order to connect them with sports institutions from an early age.
 
-- Competitive Goals
-- Images where there was an important participation by you or your children's
-- Support and publicize their recognitions validated by the sports institutions that validate and certificate said
+The company wants to provide parents, sports institutions, and families in general with the ability to verify the
+performance, achievements, and recognition of children and adolescents through their effort. We believe that all
+children and adolescents give their best to grow and enjoy their favorite sport, which is why it is important to make
+their achievements known and support their growth.
 
-<!-- Primer posible mensaje de brindar nuestros servicios -->
+## How to contribute
 
-**Clan Sports** we want to provide our users a platform, which you want to fulfill as a social network where you or
-your children's will manage their academic sports achievements. So we can provide the opportunity the
-educational institutions know their performance and with the **Clan Sports** help provide the ease of contact with you,
-and give the chance for you to grow bot personally and professionally in your life.
+Here you can find the steps to contribute [contribution guideline](./CONTRIBUTING.md)
 
-<!-- Segundo posible mensaje de brindar nuestros servicios -->
+## Arquitecture
 
-_**Clan Sports** we want to provide for you or your children's, your family, sports institutions with the facility
-to verify, know the children performance, achievements, and recognition that each of the children's have achieved with
-their effort. We believe that every children's is giving their best to grow and enjoy their favorite sport, that is
-why it is time to make them known and even support the growth of the children's._
+This project is being developed on the following stack:
 
-## Features
+- **Frontend:** React framework **Next.js** with Typescript is used for the development of views and interfaces, Chakra
+  UI as component library and styles.
+- **Backend:** Node.js with Nest all developed with Typescript and for communication with TypeORM database.
+- **Services:** Docker, Google Cloud and MySQL.
 
-Estamos analizando posibles nuevas funciones, este proyecto se esta empezando a desarrollar. Cuando este proyecto
-sea lanzado y demostrado por primera vez empezaremos a plantearnos actualizaciones.
-We are analyzing possible new features. Because this project starting to develop. When this project is released for
-first time, we will start considering more features and updates.
+### Monorepo structure
 
-<h1 align="Center"><strong>COMING SOON!!!!</strong></h1>
+#### Packages:
 
-## How to run
+- `frontend`: A next.js, frontend files.
+- `services`: A nest.js, backend files.
 
-There are two 2 components: a frontend Next.js and backend Nest.js. In order to run it locally, you need install
-node. And then it is required to run backend and frontend separately.
+## License
 
-- _frontend_: npm run dev
-- _services_: npm run start
+This project is licensed under the terms of the
+[MIT](https://github.com/codigouranio/clan.sports/blob/main/LICENSE) license.
 
-Once all is running, you can browse to port 3000 from your local IP.

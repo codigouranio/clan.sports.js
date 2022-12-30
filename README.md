@@ -4,7 +4,7 @@
 
 [![License](https://img.shields.io/github/license/codigouranio/clan.sports?color=%230A97FF&logo=github&style=for-the-badge)]()
 [![Discord](https://img.shields.io/discord/682229355446927373?color=%237289da&label=Server%20Discord&logo=discord&logoColor=%237289da&style=for-the-badge)]()
-[![Twitch](https://img.shields.io/twitch/status/codigouranio?color=%236441a5&logo=twitch&logoColor=%236441a5&style=for-the-badge)]()
+[![Twitch](https://img.shields.io/twitch/status/codigouranio?color=%236441a5&logo=twitch&logoColor=%236441a5&style=for-the-badge)](https://www.twitch.tv/codigouranio)
 
 Clan Sports is a **social network** that offers sports activities and showcases the achievements of children and
 adolescents in order to connect them with sports institutions from an early age.
@@ -38,4 +38,3 @@ This project is being developed on the following stack:
 
 This project is licensed under the terms of the
 [Apache 2.0](https://github.com/codigouranio/clan.sports/blob/main/LICENSE) license.
-

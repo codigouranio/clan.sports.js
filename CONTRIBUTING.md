@@ -8,8 +8,8 @@ Take a look at the **issues** section where you will find all issues and tasks o
 assign yourself any task or suggest a new feature or bug.
 
 If you find a bug first look for it in **issues** if it is already described join the conversation but if not write a
-new **issue** you can make use of **issue**.
-new **issue** you can make use of screenshots, videos, etc.
+new **issue** you can make use of
+screenshots, videos, etc.
 
 ## Make changes
 
@@ -34,13 +34,13 @@ official [Github Work Flow](https://docs.github.com/en/get-started/quickstart/gi
 
 Due to the structure of the monorepo it is divided into `frontend` and `services` each one has different scripts. The
 following scripts only work in the root of the monorepo, inside each package it contains its own scripts in
-the `package.json`. the `package.json`.
+the `package.json`.
 
 #### Workspace scripts
 
 ##### Handling dependencies
 
-> Before installing dependencies be very careful with the changes you send to the pull request
+> Before installing dependencies be very careful with the changes you send to the pull request.
 
 - `npm update -w {package}` Update dependencies.
 - `npm install [dependency name] -w {package}` Install dependencies.
@@ -74,9 +74,6 @@ commit message, see the following example:
 - According to the Github workflow the `development` branch is where PRs should be sent if they are sent to any of the
   other active branches they are rejected.
 
-
 - The PR may recommend changes through comments or changes may be made directly by the project maintainer.
 
-Thank you very much for wanting to contribute, we are open to any comments or changes you want to make.
-Welcome to this beautiful community. 🥳 
-
+Thank you very much for wanting to contribute, we are open to any comments or changes you want to make. **Welcome to this beautiful community.** 🥳

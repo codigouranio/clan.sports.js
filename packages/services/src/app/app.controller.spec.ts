@@ -3,10 +3,11 @@ import { Test, TestingModule } from '@nestjs/testing';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { DataSource } from 'typeorm';
 
+import { testDbConfig } from '../db/db.typeorm.config';
+import { UserModule } from '../user/user.module';
+import { UserService } from '../user/user.service';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { UserModule } from './user.module';
-import { UserService } from './user.service';
 
 describe('AppController', () => {
   let app: INestApplication;
@@ -18,19 +19,7 @@ describe('AppController', () => {
       imports: [
         TypeOrmModule.forRootAsync({
           useFactory: () => ({
-            type: 'better-sqlite3',
-            name: 'connection',
-            database: __dirname + '/../mydb.sql',
-            dropSchema: true,
-            synchronize: true,
-            migrations: [__dirname + '/db/*.ts'],
-            entities: [__dirname + '/*.entity.ts'],
-            migrationsTableName: 'migrations_typeorm',
-            migrationsRun: true,
-            cli: {
-              entitiesDir: './',
-              migrationsDir: './db',
-            },
+            ...testDbConfig,
             autoLoadEntities: true,
           }),
           dataSourceFactory: async (options) => {
@@ -56,11 +45,6 @@ describe('AppController', () => {
     it('Test User repository', async () => {
       expect(appController).toBeDefined();
       expect(userService).toBeDefined();
-
-      // let resp = await userService.test();
-      // console.log(resp);
-      // let resp2 = await userService.test2();
-      // console.log(resp2);
     });
 
     it('Test App controller', async () => {

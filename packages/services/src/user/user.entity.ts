@@ -9,8 +9,8 @@ export class User {
   @Column()
   username: string;
 
-  @Column({ nullable: true })
-  password?: string;
+  @Column()
+  password: string;
 
   @Column({ nullable: true })
   firstName?: string;
@@ -40,5 +40,5 @@ export class User {
   photo?: string;
 
   @Column({ default: true })
-  isActive: boolean;
+  isActive?: boolean;
 }

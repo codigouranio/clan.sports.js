@@ -1,19 +1,31 @@
-import { Body, Controller, Delete, Get, Post, Put } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Delete,
+  Get,
+  Post,
+  Put,
+  UsePipes,
+  ValidationPipe,
+} from '@nestjs/common';
 
 import { CreateUserDto } from './dto/create-user.dto';
 import { UserService } from './user.service';
 
-@Controller()
+@Controller('users')
+@UsePipes(new ValidationPipe({ transform: true, whitelist: true }))
 export class UserController {
-  constructor(private readonly service: UserService) {}
+  constructor(private readonly userService: UserService) {}
 
   @Post()
-  // eslint-disable-next-line @typescript-eslint/no-empty-function
-  addUser(@Body() createUser: CreateUserDto) {}
+  addUser(@Body() createUser: CreateUserDto) {
+    return this.userService.create(createUser);
+  }
 
   @Get()
-  // eslint-disable-next-line @typescript-eslint/no-empty-function
-  getUser() {}
+  getUsers() {
+    return this.userService.findAll();
+  }
 
   @Delete()
   // eslint-disable-next-line @typescript-eslint/no-empty-function

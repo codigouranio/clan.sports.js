@@ -2,7 +2,7 @@ import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { dbConfig } from 'src/db/db.typeorm.config';
 import { UserModule } from 'src/user/user.module';
-import { DataSource } from 'typeorm';
+import { DataSource, DataSourceOptions } from 'typeorm';
 
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
@@ -14,7 +14,7 @@ import { AppService } from './app.service';
         ...dbConfig,
         autoLoadEntities: true,
       }),
-      dataSourceFactory: async (options) => {
+      dataSourceFactory: async (options: DataSourceOptions) => {
         const dataSource = await new DataSource(options).initialize();
         return dataSource;
       },

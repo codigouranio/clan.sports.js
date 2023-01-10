@@ -23,7 +23,7 @@ export const testDbConfig: DataSourceOptions = {
 
 export default new DataSource(dbConfig);
 
-export const dbConfigFactory = async (options) => {
+export const dbConfigFactory = async (options: DataSourceOptions) => {
   const dataSource = await new DataSource(options).initialize();
   return dataSource;
 };

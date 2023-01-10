@@ -5,7 +5,7 @@ export class User {
   @PrimaryGeneratedColumn()
   id?: number;
 
-  @Index()
+  @Index({ unique: true })
   @Column()
   username: string;
 
@@ -18,6 +18,7 @@ export class User {
   @Column({ nullable: true })
   lastName?: string;
 
+  @Index({ unique: true })
   @Column()
   email: string;
 

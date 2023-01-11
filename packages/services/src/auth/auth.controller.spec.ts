@@ -1,4 +1,5 @@
-import { JwtModule, JwtService } from '@nestjs/jwt';
+import { ConfigModule, ConfigService } from '@nestjs/config';
+import { JwtModule } from '@nestjs/jwt';
 import { Test, TestingModule } from '@nestjs/testing';
 
 import { UserService } from '../user/user.service';
@@ -13,17 +14,17 @@ describe('AuthController', () => {
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
       imports: [
+        ConfigModule.forRoot({ isGlobal: true }),
         JwtModule.registerAsync({
-          useFactory: () => ({
-            secret: 'secret',
-            signOptions: { expiresIn: '60s' },
+          inject: [ConfigService],
+          useFactory: (config: ConfigService) => ({
+            secret: config.get<string>('JWT_SECRET'),
           }),
         }),
       ],
       controllers: [AuthController],
       providers: [
         AuthService,
-        JwtService,
         {
           provide: UserService,
           useValue: {

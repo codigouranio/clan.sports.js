@@ -2,12 +2,12 @@ import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 import { APP_GUARD } from '@nestjs/core';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { AuthModule } from 'src/auth/auth.module';
-import { JwtAuthGuard } from 'src/auth/jwt-auth.guard';
-import { dbConfig } from 'src/db/db.typeorm.config';
-import { UserModule } from 'src/user/user.module';
 import { DataSource, DataSourceOptions } from 'typeorm';
 
+import { AuthModule } from '../auth/auth.module';
+import { JwtAuthGuard } from '../auth/jwt-auth.guard';
+import { dbConfig } from '../db/db.typeorm.config';
+import { UserModule } from '../user/user.module';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 

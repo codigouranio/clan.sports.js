@@ -1,3 +1,4 @@
+import { ConfigModule, ConfigService } from '@nestjs/config';
 import { JwtModule } from '@nestjs/jwt';
 import { Test, TestingModule } from '@nestjs/testing';
 import { isJWT } from 'class-validator';
@@ -14,10 +15,14 @@ describe('AuthService', () => {
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
       imports: [
+        ConfigModule.forRoot({
+          isGlobal: true,
+        }),
         JwtModule.registerAsync({
-          useFactory: async () => ({
-            secret: 'testSecret',
-            signOptions: { expiresIn: '60s' },
+          inject: [ConfigService],
+          useFactory: async (config: ConfigService) => ({
+            secret: config.get<string>('JWT_SECRET'),
+            signOptions: { expiresIn: config.get<string>('JWT_EXPIRES_IN') },
           }),
         }),
       ],

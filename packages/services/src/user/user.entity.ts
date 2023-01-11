@@ -5,12 +5,12 @@ export class User {
   @PrimaryGeneratedColumn()
   id?: number;
 
-  @Index()
-  @Column()
-  username: string;
+  @Index({ unique: true, where: '"username" IS NOT NULL' })
+  @Column({ nullable: true })
+  username?: string;
 
   @Column()
-  password: string;
+  passwordHash: string;
 
   @Column({ nullable: true })
   firstName?: string;
@@ -18,6 +18,7 @@ export class User {
   @Column({ nullable: true })
   lastName?: string;
 
+  @Index({ unique: true })
   @Column()
   email: string;
 

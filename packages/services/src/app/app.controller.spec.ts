@@ -1,7 +1,7 @@
 import { INestApplication } from '@nestjs/common';
 import { Test, TestingModule } from '@nestjs/testing';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { DataSource } from 'typeorm';
+import { DataSource, DataSourceOptions } from 'typeorm';
 
 import { testDbConfig } from '../db/db.typeorm.config';
 import { UserModule } from '../user/user.module';
@@ -22,7 +22,7 @@ describe('AppController', () => {
             ...testDbConfig,
             autoLoadEntities: true,
           }),
-          dataSourceFactory: async (options) => {
+          dataSourceFactory: async (options: DataSourceOptions) => {
             const dataSource = await new DataSource(options).initialize();
             return dataSource;
           },

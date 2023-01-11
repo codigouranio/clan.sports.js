@@ -23,6 +23,8 @@ describe.only('Test User Service', () => {
           useValue: {
             find: jest.fn(),
             save: jest.fn(),
+            findOne: jest.fn(),
+            findOneBy: jest.fn(),
           },
         },
       ],
@@ -45,7 +47,7 @@ describe.only('Test User Service', () => {
     const userParams: User = {
       username: 'pepe',
       email: 'pepe@micasa.mx',
-      password: '123456',
+      passwordHash: '123456',
     };
 
     it('Should call userRepository.save with correct params', async () => {
@@ -75,7 +77,7 @@ describe.only('Test User Service', () => {
         {
           username: 'pepe',
           email: 'a@a.com',
-          password: '123456',
+          passwordHash: '123456',
         },
       ];
       jest.spyOn(userRepository, 'find').mockResolvedValue(users);
@@ -83,6 +85,40 @@ describe.only('Test User Service', () => {
       const result = await userService.findAll();
 
       expect(result).toEqual(users);
+    });
+  });
+
+  describe('findOne', () => {
+    it('Should call userRepository.findOne with correct params', async () => {
+      const id = 1;
+      await userService.findOne(id);
+
+      expect(userRepository.findOne).toHaveBeenCalledWith({ where: { id } });
+      expect(userRepository.findOne).toHaveBeenCalledTimes(1);
+    });
+
+    it('Should return a user', async () => {
+      const id = 1;
+      const user: User = {
+        id,
+        username: 'pepe',
+        email: 'jhon@doe.com',
+        passwordHash: '123456',
+      };
+      jest.spyOn(userRepository, 'findOne').mockResolvedValue(user);
+
+      const result = await userService.findOne(id);
+
+      expect(result).toEqual(user);
+    });
+
+    it('Should return null if user is not found', async () => {
+      const id = 1;
+      jest.spyOn(userRepository, 'findOne').mockResolvedValue(null);
+
+      const result = await userService.findOne(id);
+
+      expect(result).toBeNull();
     });
   });
 });

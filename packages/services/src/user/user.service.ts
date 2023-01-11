@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { CreateUserDto } from 'src/user/dto/create-user.dto';
-import { Repository, UpdateResult } from 'typeorm';
+import { FindOptionsWhere, Repository, UpdateResult } from 'typeorm';
 
 import { User } from './user.entity';
 
@@ -22,7 +22,7 @@ export class UserService {
   }
 
   async update(userId: number, updateUser: User) {
-    const user: User = await this.repo.findOneBy({ id: userId });
+    const user = await this.repo.findOneBy({ id: userId });
     if (!user) return;
     const resp: UpdateResult = await this.repo.update(
       { id: userId },
@@ -38,7 +38,11 @@ export class UserService {
     return resp;
   }
 
-  async findOne(userId: number): Promise<User> {
+  async findOne(userId: number) {
     return this.repo.findOne({ where: { id: userId } });
+  }
+
+  async findOneBy(where: FindOptionsWhere<User>) {
+    return this.repo.findOne({ where });
   }
 }

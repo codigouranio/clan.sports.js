@@ -8,13 +8,13 @@ import {
 } from 'class-validator';
 
 export class CreateUserDto {
-  @IsNotEmpty()
   @IsString()
-  readonly username: string;
+  @IsOptional()
+  readonly username?: string;
 
   @IsNotEmpty()
   @IsString()
-  readonly password: string;
+  readonly passwordHash: string;
 
   @IsString()
   @IsOptional()

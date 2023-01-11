@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { CreateUserDto } from 'src/user/dto/create-user.dto';
-import { Repository, UpdateResult } from 'typeorm';
+import { FindOptionsWhere, Repository, UpdateResult } from 'typeorm';
 
 import { User } from './user.entity';
 
@@ -40,5 +40,9 @@ export class UserService {
 
   async findOne(userId: number) {
     return this.repo.findOne({ where: { id: userId } });
+  }
+
+  async findOneBy(where: FindOptionsWhere<User>) {
+    return this.repo.findOne({ where });
   }
 }

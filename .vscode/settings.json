@@ -25,7 +25,5 @@
   "prettier.enable": true,
   "prettier.requireConfig": true,
   "prettier.useEditorConfig": false,
-  "prettier.configPath": "./.prettierrc.js",
-  "prettier.ignorePath": "./.prettierignore",
   "prettier.withNodeModules": false
 }

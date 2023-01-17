@@ -2,6 +2,6 @@ interface Props {
   content: string;
 }
 
-export const Button = ({ content }: Props) => {
+export const ButtonCustom = ({ content }: Props) => {
   return <button>{content}</button>;
 };

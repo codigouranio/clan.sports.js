@@ -21,3 +21,5 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-v1-dependencies-
       - run: npm ci
+      - name: Run tests
+        run: npm test

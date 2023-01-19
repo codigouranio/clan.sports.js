@@ -19,6 +19,7 @@
     "services:test:e2e": "npm run test:e2e --workspace=services",
     "services:typeorm:db": "npm run typeorm:db --workspace=services",
     "services:typeorm": "npm run typeorm --workspace=services",
+    "services:docker:build": "docker build -f ./.docker/Dockerfile -t ${npm_package_name}-services:latest .",
     "frontend:dev": "npm run dev --workspace=frontend",
     "frontend:build": "npm run build --workspace=frontend",
     "frontend:start": "npm run start --workspace=frontend",

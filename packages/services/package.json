@@ -33,7 +33,7 @@
     "test:e2e": "jest --config ./test/jest-e2e.json",
     "typeorm:db": "typeorm-ts-node-esm -d ./src/db/db.typeorm.config.ts",
     "typeorm": "typeorm-ts-node-esm -d ./src/db/db.typeorm.config.ts",
-    "docker:build": "docker build -f docker/Dockerfile -t ${npm_package_name}:latest ."
+    "docker:build": "docker build -f ./.docker/Dockerfile -t clan.sports-${npm_package_name}:latest ."
   },
   "dependencies": {
     "@nestjs/common": "9.0.0",

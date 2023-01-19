@@ -1,0 +1,6 @@
+name: build_and_deploy_service
+
+on:
+  release:
+    types:
+      - published

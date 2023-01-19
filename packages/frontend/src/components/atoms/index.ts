@@ -1,4 +1,4 @@
-export * from './ButtonCustom';
+export * from './ButtonLargeIcon';
 export * from './ButtonGoogle';
 export * from './HeadComponent';
 export * from './Input';

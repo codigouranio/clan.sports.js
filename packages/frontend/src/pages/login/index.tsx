@@ -1,12 +1,15 @@
 // Chakra
-import { Box, Button, Center, Text } from '@chakra-ui/react';
+import { Box, Center, Text } from '@chakra-ui/react';
 // Next
 import { NextPage } from 'next';
 import Image from 'next/image';
 import React from 'react';
-// Icons
-import { FiLogIn } from 'react-icons/fi';
-import { ButtonGoogle, InputEmail, InputPassword } from 'src/components/atoms';
+import {
+  ButtonGoogle,
+  ButtonLargeIcon,
+  InputEmail,
+  InputPassword,
+} from 'src/components/atoms';
 // Components
 import { MainLayout } from 'src/components/layouts';
 
@@ -58,14 +61,7 @@ const LoginPage: NextPage = () => {
             >
               Recovery Password?
             </Text>
-            <Button
-              rightIcon={<FiLogIn />}
-              variant="solid"
-              colorScheme="clan"
-              marginTop="15px"
-            >
-              Login
-            </Button>
+            <ButtonLargeIcon content="Login" margin="15px 0 0 0" />
           </Box>
         </Box>
       </Center>

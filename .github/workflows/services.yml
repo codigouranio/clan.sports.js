@@ -1,0 +1,17 @@
+name: build_and_deploy_services
+
+on:
+  push:
+    branches: [development]
+  pull_request:
+    branches: [development]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: step 1
+        run: echo Hola!

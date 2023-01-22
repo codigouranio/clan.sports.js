@@ -24,7 +24,7 @@ const theme = extendTheme({
         borderRadius: 'xl',
       },
       variants: {
-        solid: {
+        form: {
           width: '100%',
         },
       },

@@ -1,4 +1,5 @@
 //--Chakra-Ui
+import { IconDiscord, IconGithub } from '@/components/atoms';
 import {
   Box,
   Button,
@@ -9,21 +10,18 @@ import {
   Spacer,
   Text,
 } from '@chakra-ui/react';
-//--- Next
 import type { NextPage } from 'next';
 import Image from 'next/image';
 import { MdMail } from 'react-icons/md';
-//-- Components
-import { ButtonLargeIcon } from 'src/components/atoms';
-//--Layout
 import { MainLayout } from 'src/components/layouts';
 
-//-- Assets
 import imageHeader from '../../public/image-header.jpg';
 import logo from '../../public/logo_cs_negro.svg';
 
-//  TODO:- Optimization the image for header
-//       - Icons the Git, Twitch y Discord in navbar
+//  TODO:x Optimization the image for header
+//       x Icons the Git, Discord in navbar
+//       x Create Icons components
+//       - Create toogle dark mode and theme dark
 //       - Divide the page by components
 //       - Create more information section
 //       - Realize contributor section
@@ -40,14 +38,32 @@ const Home: NextPage = () => {
             <Box maxWidth="100px">
               <Image src={logo} alt="Logo Clan Sports" />
             </Box>
+
             <Spacer />
-            <Box>
-              <ButtonLargeIcon content="Login" />
-            </Box>
+
+            <Flex as="div" w="100px" justifyContent="space-evenly">
+              <IconDiscord
+                width={7}
+                height={7}
+                color={'#9fc1d5'}
+                cursorPointer={'pointer'}
+                colorHover={'#708795'}
+              />
+
+              <IconGithub
+                width={6}
+                height={7}
+                color="#9fc1d5"
+                cursorPointer={'pointer'}
+                colorHover={'#708795'}
+              />
+            </Flex>
           </Flex>
+
           {
             //-----Finish NavBar
           }
+
           <Flex justifyContent="space-between" alignItems="center">
             <Box maxW="45%" marginTop="1rem" textAlign="center">
               <Heading as="h2" fontSize="4xl">

@@ -5,3 +5,5 @@ export * from './Input';
 export * from './InputEmail';
 export * from './InputPassword';
 export * from './InputUserName';
+export * from './IconDiscord';
+export * from './IconGithub';

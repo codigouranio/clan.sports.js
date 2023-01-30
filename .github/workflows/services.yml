@@ -27,6 +27,6 @@ jobs:
             ${{ runner.os }}-v1-dependencies-
       - run: npm ci
       - name: Run tests
-        run: npm test
+        run: npm run services:test
       - name: Build docker image
-        run: npm run docker:build -- -t ${{ steps.vars.outputs.image }} -t ${{ steps.vars.output.latest }}
+        run: npm run services:docker:build -- -t ${{ steps.vars.outputs.image }} -t ${{ steps.vars.output.latest }}

@@ -1,4 +1,4 @@
-ARG NODE_VERSION=14.17-alpine
+ARG NODE_VERSION=17-alpine
 FROM node:${NODE_VERSION} as base
 
 COPY .docker/docker-entrypoint.sh /usr/local/bin/docker-entrypoint.sh

@@ -5,6 +5,11 @@ on:
     branches:
       - development
 
+env:
+  NODE_ENV: 'dev'
+  SERVICE_NAME: 'clan.sports-services'
+  DOCKER_USERNAME: 'codigouranio'
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -23,3 +28,5 @@ jobs:
       - run: npm ci
       - name: Run tests
         run: npm test
+      - name: Build docker image
+        run: npm run docker:build -- -t ${{ steps.vars.outputs.image }} -t ${{ steps.vars.output.latest }}

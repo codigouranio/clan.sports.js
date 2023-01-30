@@ -1,4 +1,4 @@
-ARG NODE_VERSION=17-alpine
+ARG NODE_VERSION=14.17-alpine
 FROM node:${NODE_VERSION} as base
 
 COPY .docker/docker-entrypoint.sh /usr/local/bin/docker-entrypoint.sh
@@ -6,7 +6,8 @@ RUN chmod +x /usr/local/bin/docker-entrypoint.sh
 WORKDIR /home/node/app/
 
 FROM base AS dependencies
-RUN apk add --update build-base python
+# RUN apk add --update build-base python
+RUN apk add g++ make build-base python2
 COPY ./package.json /home/node/app/
 RUN npm i
 

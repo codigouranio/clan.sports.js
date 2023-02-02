@@ -12,7 +12,13 @@ interface Props {
 export const InputButton: React.FC<Props> = ({ content, placeholder }) => {
   return (
     <Flex w="90%" margin="25px auto">
-      <Input placeholder={placeholder} variant="filled" borderLeftRadius="xl" />
+      <Input
+        placeholder={placeholder}
+        variant="filled"
+        borderLeftRadius="xl"
+        borderRightRadius="0"
+      />
+
       <Button
         p={0}
         borderLeftRadius="0"

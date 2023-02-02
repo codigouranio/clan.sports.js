@@ -39,7 +39,7 @@ jobs:
           echo ${{ env.DOCKER_AUTH_TOKEN }} | docker login --username=${{ env.DOCKER_USERNAME }} --password-stdin
       - name: Push to DockerHub
         run: |
-          docker push clan.sports-services:latest
+          docker push codigouranio/clan.sports-services:latest
 
   deploy-service-production:
     needs: [build-service]

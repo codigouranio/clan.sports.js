@@ -43,6 +43,7 @@ jobs:
   deploy-service-production:
     needs: [build-service]
     runs-on: ubuntu-latest
+    steps:
       - name: prereqs
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
@@ -62,11 +63,9 @@ jobs:
           sudo apt-get update && sudo apt-get -y install curl jq
           curl https://s3.us-west-2.amazonaws.com/lightsailctl/latest/linux-amd64/lightsailctl -o /usr/local/bin/lightsailctl
           chmod +x /usr/local/bin/lightsailctl
-      - name: Release to Amazon Lightsail        
+      - name: Release to Amazon Lightsail
         env:
-          CONTAINER_SERVICE_NAME: service-${{ env.SERVICE_NAME }}        
+          CONTAINER_SERVICE_NAME: service-${{ env.SERVICE_NAME }}
         run: |
           echo 'Releasing to Amazon Lightsail'
           docker info
-
-

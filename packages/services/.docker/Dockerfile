@@ -21,17 +21,14 @@ RUN chmod +x /usr/local/bin/docker-entrypoint.sh
 WORKDIR /home/node/app/
 
 FROM base AS dependencies
-# RUN apk add g++ make build-base py3-pip
 COPY ./package.json /home/node/app/
-RUN sqlite3 --version
 RUN npm i --build-from-source --sqlite=$(dirname "$(which sqlite3)")
 
 FROM base as build
 COPY --from=dependencies /home/node/app/node_modules ./node_modules
 COPY . ./
-RUN npx typeorm --help
-RUN npm run typeorm:db migration:run
 RUN npm run build
+RUN npm run typeorm:db migration:run
 
 FROM base AS release
 COPY --from=dependencies /home/node/app/node_modules ./node_modules

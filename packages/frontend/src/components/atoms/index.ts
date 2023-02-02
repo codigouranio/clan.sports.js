@@ -7,3 +7,4 @@ export * from './InputPassword';
 export * from './InputUserName';
 export * from './IconDiscord';
 export * from './IconGithub';
+export * from './LogoNav';

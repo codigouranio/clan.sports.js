@@ -32,7 +32,7 @@
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
     "test:e2e": "jest --config ./test/jest-e2e.json",
     "typeorm:db": "typeorm-ts-node-esm -d ./src/db/db.typeorm.config.ts",
-    "docker:build": "docker build -f ./.docker/Dockerfile -t clan.sports-${npm_package_name}:latest ."
+    "docker:build": "docker build -f ./.docker/Dockerfile -t codigouranio/clan.sports-${npm_package_name}:latest ."
   },
   "dependencies": {
     "@nestjs/common": "9.2.1",

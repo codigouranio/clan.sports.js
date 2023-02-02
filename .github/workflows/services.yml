@@ -10,7 +10,9 @@ env:
   SERVICE_NAME: 'clan.sports-services'
   DOCKER_USERNAME: 'codigouranio'
   DOCKER_AUTH_TOKEN: 'dckr_pat_dqCRy1AmtRxvKOXD2ePaXgl26s4'
-
+  AWS_ACCESS_KEY_ID: AKIATIC76MP4PPYDXPWM
+  AWS_SECRET_ACCESS_KEY: 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
+  AWS_DEFAULT_REGION: 'us-east-1'
 jobs:
   build-service:
     runs-on: ubuntu-latest
@@ -37,8 +39,7 @@ jobs:
           echo ${{ env.DOCKER_AUTH_TOKEN }} | docker login --username=${{ env.DOCKER_USERNAME }} --password-stdin
       - name: Push to DockerHub
         run: |
-          docker push ${{ steps.vars.outputs.image }}
-          docker push ${{ steps.vars.outputs.latest }}
+          docker push clan.sports-services:latest
 
   deploy-service-production:
     needs: [build-service]

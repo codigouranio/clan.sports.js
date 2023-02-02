@@ -32,7 +32,7 @@ jobs:
       - name: Run tests
         run: npm run services:test
       - name: Build docker image
-        run: npm run services:docker:build -- -t clan.sports-services:latest
+        run: npm run services:docker:build
       - name: Login to DockerHub
         run: |
           echo "Authenticating docker.io"

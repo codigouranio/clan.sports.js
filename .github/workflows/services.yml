@@ -30,3 +30,12 @@ jobs:
         run: npm run services:test
       - name: Build docker image
         run: npm run services:docker:build -- -t ${{ steps.vars.outputs.image }} -t ${{ steps.vars.output.latest }}
+      - name: Login to DockerHub
+        run: |
+          echo "Authenticating docker.io"
+          echo ${{ secrets.DOCKER_AUTH_TOKEN }} | docker login --username=${{ env.DOCKER_USERNAME }} --password-stdin
+      - name: Push to DockerHub
+        run: |
+          docker push ${{ steps.vars.outputs.image }}
+          docker push ${{ steps.vars.outputs.latest }}
+

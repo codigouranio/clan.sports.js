@@ -11,10 +11,10 @@ on:
       - development
 
 env:
-  NODE_ENV: 'dev'
-  SERVICE_NAME: 'clan.sports-services'
-  DOCKER_USERNAME: 'codigouranio'
-  AWS_DEFAULT_REGION: 'us-east-1'
+  NODE_ENV: dev
+  SERVICE_NAME: container-service-clan-sports-servicesarch
+  DOCKER_USERNAME: codigouranio
+  AWS_DEFAULT_REGION: us-east-1
 
 jobs:
   build-service:
@@ -53,65 +53,33 @@ jobs:
     runs-on: ubuntu-latest
     environment: development
     steps:
-      - name: prerequisites
+      - name: Prerequisites
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           AWS_DEFAULT_REGION: 'us-east-1'
+          CONTAINER_IMAGE_NAME: ${{ env.DOCKER_USERNAME }}/${{ env.SERVICE_NAME }}:latest
+          CONTAINER_SERVICE_NAME: service-${{ env.SERVICE_NAME }}          
         run: |
           aws configure set aws_access_key_id ${{ env.AWS_ACCESS_KEY_ID }}
           aws configure set aws_secret_access_key ${{ env.AWS_SECRET_ACCESS_KEY }}
           aws configure set default.region ${{ env.AWS_DEFAULT_REGION }}
           aws configure set region ${{ env.AWS_DEFAULT_REGION }}
-      - name: Install essentials
-        run: |
-          aws --version
-          sudo apt-get update && sudo apt-get -y install curl jq
-          curl https://s3.us-west-2.amazonaws.com/lightsailctl/latest/linux-amd64/lightsailctl -o /usr/local/bin/lightsailctl
-          chmod +x /usr/local/bin/lightsailctl
-      - name: Release to Amazon Lightsail
-        env:
-          DOCKER_AUTH_TOKEN: ${{ secrets.DOCKER_AUTH_TOKEN }}
-          DOCKER_USERNAME: ${{ env.DOCKER_USERNAME }}
-          CONTAINER_IMAGE_NAME: ${{ env.DOCKER_USERNAME }}/${{ env.SERVICE_NAME }}:latest
-          CONTAINER_SERVICE_NAME: service-${{ env.SERVICE_NAME }}
-        run: |
-          echo "Releasing to Amazon Lightsail"
-          docker info
 
           echo "Authenticating docker.io"
           echo ${{ env.DOCKER_AUTH_TOKEN }} | docker login --username=${{ env.DOCKER_USERNAME }} --password-stdin
 
-          docker pull ${{ env.CONTAINER_IMAGE_NAME }}
+          docker pull ${{ env.CONTAINER_IMAGE_NAME }}   
+          docker save -o deploy.tar ${{ env.CONTAINER_IMAGE_NAME }}  
+    - name: Deploy to EB
+      uses: einaregilsson/beanstalk-deploy@v14
+      with:
+        aws_access_key: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        aws_secret_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        application_name: clan-sports-services
+        environment_name: Clansportsservices-env
+        version_label: clan-sports-services-latest
+        region: us-east-1
+        deployment_package: deploy.tar
 
-          # upload the docker image for this pipeline
-          aws lightsail push-container-image \
-            --service-name ${{ env.CONTAINER_SERVICE_NAME }}  \
-            --label ${{ env.SERVICE_NAME }}-latest  \
-            --image ${{ env.CONTAINER_IMAGE_NAME }}
 
-          IMAGE_TAG=$(aws lightsail get-container-images --service $CONTAINER_SERVICE_NAME | jq -r .containerImages[0].image)
-
-          # create a deployment with uploaded docker image
-          aws lightsail create-container-service-deployment \
-            --service-name $CONTAINER_SERVICE_NAME \
-            --containers "{
-              \"$CONTAINER_SERVICE_NAME\": {
-                \"image\": \"$IMAGE_TAG\",
-                \"environment\": {
-                  \"NODE_ENV\": \"production\",
-                  \"PGSSLMODE\": \"no-verify\"
-                },
-                \"ports\": {
-                  \"80\": \"HTTP\"
-                }
-              }
-            }" \
-            --public-endpoint "{
-              \"containerName\": \"$CONTAINER_SERVICE_NAME\",
-              \"containerPort\": 80,
-              \"healthCheck\": {
-                \"path\": \"/healthcheck/liveness\",
-                \"intervalSeconds\": 10
-              }
-            }"

@@ -59,7 +59,7 @@ jobs:
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           AWS_DEFAULT_REGION: 'us-east-1'
           CONTAINER_IMAGE_NAME: ${{ env.DOCKER_USERNAME }}/${{ env.SERVICE_NAME }}:latest
-          CONTAINER_SERVICE_NAME: service-${{ env.SERVICE_NAME }}          
+          CONTAINER_SERVICE_NAME: service-${{ env.SERVICE_NAME }}
         run: |
           aws configure set aws_access_key_id ${{ env.AWS_ACCESS_KEY_ID }}
           aws configure set aws_secret_access_key ${{ env.AWS_SECRET_ACCESS_KEY }}
@@ -70,14 +70,14 @@ jobs:
           echo ${{ env.DOCKER_AUTH_TOKEN }} | docker login --username=${{ env.DOCKER_USERNAME }} --password-stdin
 
           docker pull ${{ env.CONTAINER_IMAGE_NAME }}   
-          docker save -o deploy.tar ${{ env.CONTAINER_IMAGE_NAME }}  
-    - name: Deploy to EB
-      uses: einaregilsson/beanstalk-deploy@v14
-      with:
-        aws_access_key: ${{ secrets.AWS_ACCESS_KEY_ID }}
-        aws_secret_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-        application_name: 'clan-sports-services'
-        environment_name: 'Clansportsservices-env'
-        version_label: 'clan-sports-services-latest'
-        region: 'us-east-1'
-        deployment_package: deploy.tar
+          docker save -o deploy.tar ${{ env.CONTAINER_IMAGE_NAME }}
+      - name: Deploy to EB
+        uses: einaregilsson/beanstalk-deploy@v14
+        with:
+          aws_access_key: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws_secret_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          application_name: 'clan-sports-services'
+          environment_name: 'Clansportsservices-env'
+          version_label: 'clan-sports-services-latest'
+          region: 'us-east-1'
+          deployment_package: deploy.tar

@@ -60,6 +60,8 @@ jobs:
           AWS_DEFAULT_REGION: 'us-east-1'
           CONTAINER_IMAGE_NAME: ${{ env.DOCKER_USERNAME }}/${{ env.SERVICE_NAME }}:latest
           CONTAINER_SERVICE_NAME: service-${{ env.SERVICE_NAME }}
+          DOCKER_AUTH_TOKEN: ${{ secrets.DOCKER_AUTH_TOKEN }}
+          DOCKER_USERNAME: ${{ env.DOCKER_USERNAME }}
         run: |
           aws configure set aws_access_key_id ${{ env.AWS_ACCESS_KEY_ID }}
           aws configure set aws_secret_access_key ${{ env.AWS_SECRET_ACCESS_KEY }}

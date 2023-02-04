@@ -1,6 +1,11 @@
 name: build_and_deploy_services
 
 on:
+  workflow_call:
+    secrets:
+      DOCKER_AUTH_TOKEN:
+        description: 'Required docker auth token'
+        required: true
   push:
     branches:
       - development
@@ -39,7 +44,7 @@ jobs:
           DOCKER_USERNAME: ${{ env.DOCKER_USERNAME }}
         run: |
           echo "Authenticating docker.io"
-          echo $DOCKER_AUTH_TOKEN | docker login --username=$DOCKER_USERNAME --password-stdin
+          echo ${{ env.DOCKER_AUTH_TOKEN }} | docker login --username=${{ env.DOCKER_USERNAME }} --password-stdin
       - name: Push to DockerHub
         run: |
           docker push ${{ env.DOCKER_USERNAME }}/${{ env.SERVICE_NAME }}:latest

@@ -28,7 +28,7 @@ FROM base as build
 COPY --from=dependencies /home/node/app/node_modules ./node_modules
 COPY . ./
 RUN npm run build
-RUN npm run typeorm:db migration:run
+# RUN npm run typeorm:db migration:run
 
 FROM base AS release
 COPY --from=dependencies /home/node/app/node_modules ./node_modules

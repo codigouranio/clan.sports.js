@@ -54,6 +54,7 @@ jobs:
   deploy-service-production:
     needs: [build-service]
     runs-on: ubuntu-latest
+    environment: development
     steps:
       - name: prerequisites
         env:
@@ -61,10 +62,10 @@ jobs:
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           AWS_DEFAULT_REGION: 'us-east-1'
         run: |
-          aws configure set aws_access_key_id $AWS_ACCESS_KEY_ID
-          aws configure set aws_secret_access_key $AWS_SECRET_ACCESS_KEY
-          aws configure set default.region $AWS_DEFAULT_REGION
-          aws configure set region $AWS_DEFAULT_REGION
+          aws configure set aws_access_key_id ${{ env.AWS_ACCESS_KEY_ID }}
+          aws configure set aws_secret_access_key ${{ env.AWS_SECRET_ACCESS_KEY }}
+          aws configure set default.region ${{ env.AWS_DEFAULT_REGION }}
+          aws configure set region ${{ env.AWS_DEFAULT_REGION }}
           cat ~/.aws/credentials
       - name: Install essentials
         run: |

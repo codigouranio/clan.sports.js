@@ -12,7 +12,7 @@ on:
 
 env:
   NODE_ENV: 'dev'
-  SERVICE_NAME: 'container-service-clan-sports-servicesarch'
+  SERVICE_NAME: 'clan.sports-services'
   DOCKER_USERNAME: 'codigouranio'
   AWS_DEFAULT_REGION: 'us-east-1'
 

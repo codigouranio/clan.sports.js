@@ -11,10 +11,10 @@ on:
       - development
 
 env:
-  NODE_ENV: dev
-  SERVICE_NAME: container-service-clan-sports-servicesarch
-  DOCKER_USERNAME: codigouranio
-  AWS_DEFAULT_REGION: us-east-1
+  NODE_ENV: 'dev'
+  SERVICE_NAME: 'container-service-clan-sports-servicesarch'
+  DOCKER_USERNAME: 'codigouranio'
+  AWS_DEFAULT_REGION: 'us-east-1'
 
 jobs:
   build-service:
@@ -76,10 +76,8 @@ jobs:
       with:
         aws_access_key: ${{ secrets.AWS_ACCESS_KEY_ID }}
         aws_secret_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-        application_name: clan-sports-services
-        environment_name: Clansportsservices-env
-        version_label: clan-sports-services-latest
-        region: us-east-1
+        application_name: 'clan-sports-services'
+        environment_name: 'Clansportsservices-env'
+        version_label: 'clan-sports-services-latest'
+        region: 'us-east-1'
         deployment_package: deploy.tar
-
-

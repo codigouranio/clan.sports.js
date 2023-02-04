@@ -19,51 +19,53 @@ env:
   # AWS_SECRET_ACCESS_KEY: yTIxhN5o9GYkNuL/GuTsF67ts8J9KUL6FzSbyAFB
   AWS_DEFAULT_REGION: 'us-east-1'
 jobs:
-  build-service:
-    runs-on: ubuntu-latest
-    steps:
-      - name: checkout
-        uses: actions/checkout@v3
-        with:
-          ref: ${{ github.head_ref }}
-      - name: restore_or_save_cache
-        uses: actions/cache@v3
-        with:
-          path: ~/.npm
-          key: ${{ runner.os }}-v1-dependencies-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-v1-dependencies-
-      - run: npm ci
-      - name: Run tests
-        run: npm run services:test
-      - name: Build docker image
-        run: npm run services:docker:build
-      - name: Login to DockerHub
-        env:
-          DOCKER_AUTH_TOKEN: ${{ secrets.DOCKER_AUTH_TOKEN }}
-          DOCKER_USERNAME: ${{ env.DOCKER_USERNAME }}
-        run: |
-          echo "Authenticating docker.io"
-          echo ${{ env.DOCKER_AUTH_TOKEN }} | docker login --username=${{ env.DOCKER_USERNAME }} --password-stdin
-      - name: Push to DockerHub
-        run: |
-          docker push ${{ env.DOCKER_USERNAME }}/${{ env.SERVICE_NAME }}:latest
+  development:
+    build-service:
+      runs-on: ubuntu-latest
+      steps:
+        - name: checkout
+          uses: actions/checkout@v3
+          with:
+            ref: ${{ github.head_ref }}
+        - name: restore_or_save_cache
+          uses: actions/cache@v3
+          with:
+            path: ~/.npm
+            key: ${{ runner.os }}-v1-dependencies-${{ hashFiles('**/package-lock.json') }}
+            restore-keys: |
+              ${{ runner.os }}-v1-dependencies-
+        - run: npm ci
+        - name: Run tests
+          run: npm run services:test
+        - name: Build docker image
+          run: npm run services:docker:build
+        - name: Login to DockerHub
+          env:
+            DOCKER_AUTH_TOKEN: ${{ secrets.DOCKER_AUTH_TOKEN }}
+            DOCKER_USERNAME: ${{ env.DOCKER_USERNAME }}
+          run: |
+            echo "Authenticating docker.io"
+            echo ${{ env.DOCKER_AUTH_TOKEN }} | docker login --username=${{ env.DOCKER_USERNAME }} --password-stdin
+        - name: Push to DockerHub
+          run: |
+            docker push ${{ env.DOCKER_USERNAME }}/${{ env.SERVICE_NAME }}:latest
 
   deploy-service-production:
-    needs: [build-service]
-    runs-on: ubuntu-latest
-    steps:
-      - name: prerequisites
-        env:
-          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          AWS_DEFAULT_REGION: 'us-east-1'
-        run: |
-          aws configure set aws_access_key_id $AWS_ACCESS_KEY_ID
-          aws configure set aws_secret_access_key $AWS_SECRET_ACCESS_KEY
-          aws configure set default.region $AWS_DEFAULT_REGION
-          aws configure set region $AWS_DEFAULT_REGION
-          cat ~/.aws/credentials
-      - name: Install essentials
-        run: |
-          aws --version
+    development:
+      needs: [build-service]
+      runs-on: ubuntu-latest
+      steps:
+        - name: prerequisites
+          env:
+            AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+            AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+            AWS_DEFAULT_REGION: 'us-east-1'
+          run: |
+            aws configure set aws_access_key_id $AWS_ACCESS_KEY_ID
+            aws configure set aws_secret_access_key $AWS_SECRET_ACCESS_KEY
+            aws configure set default.region $AWS_DEFAULT_REGION
+            aws configure set region $AWS_DEFAULT_REGION
+            cat ~/.aws/credentials
+        - name: Install essentials
+          run: |
+            aws --version

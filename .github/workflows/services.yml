@@ -74,6 +74,7 @@ jobs:
           DOCKER_AUTH_TOKEN: ${{ secrets.DOCKER_AUTH_TOKEN }}
           DOCKER_USERNAME: ${{ env.DOCKER_USERNAME }}
           CONTAINER_IMAGE_NAME: ${{ env.DOCKER_USERNAME }}/${{ env.SERVICE_NAME }}:latest
+          CONTAINER_SERVICE_NAME: service-${{ env.SERVICE_NAME }}
         run: |
           echo "Releasing to Amazon Lightsail"
           docker info
@@ -81,10 +82,36 @@ jobs:
           echo "Authenticating docker.io"
           echo ${{ env.DOCKER_AUTH_TOKEN }} | docker login --username=${{ env.DOCKER_USERNAME }} --password-stdin
 
-          docker pull ${{ env.CONTAINER_SERVICE_NAME }}
+          docker pull ${{ env.CONTAINER_IMAGE_NAME }}
 
           # upload the docker image for this pipeline
           aws lightsail push-container-image \
-            --service-name ${{ env.SERVICE_NAME }}  \
+            --service-name ${{ env.CONTAINER_SERVICE_NAME }}  \
             --label ${{ env.SERVICE_NAME }}-latest  \
             --image ${{ env.CONTAINER_IMAGE_NAME }}
+
+          IMAGE_TAG=$(aws lightsail get-container-images --service $CONTAINER_SERVICE_NAME | jq -r .containerImages[0].image)
+
+          # create a deployment with uploaded docker image
+          aws lightsail create-container-service-deployment \
+            --service-name $CONTAINER_SERVICE_NAME \
+            --containers "{
+              \"$CONTAINER_SERVICE_NAME\": {
+                \"image\": \"$IMAGE_TAG\",
+                \"environment\": {
+                  \"NODE_ENV\": \"production\",
+                  \"PGSSLMODE\": \"no-verify\"
+                },
+                \"ports\": {
+                  \"80\": \"HTTP\"
+                }
+              }
+            }" \
+            --public-endpoint "{
+              \"containerName\": \"$CONTAINER_SERVICE_NAME\",
+              \"containerPort\": 80,
+              \"healthCheck\": {
+                \"path\": \"/healthcheck/liveness\",
+                \"intervalSeconds\": 10
+              }
+            }"

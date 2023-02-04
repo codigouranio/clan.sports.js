@@ -81,7 +81,7 @@ jobs:
           echo "Authenticating docker.io"
           echo ${{ env.DOCKER_AUTH_TOKEN }} | docker login --username=${{ env.DOCKER_USERNAME }} --password-stdin
 
-          docker pull $CONTAINER_SERVICE_NAME
+          docker pull ${{ env.CONTAINER_SERVICE_NAME }}
 
           # upload the docker image for this pipeline
           aws lightsail push-container-image \

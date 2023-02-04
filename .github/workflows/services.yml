@@ -72,7 +72,8 @@ jobs:
           echo ${{ env.DOCKER_AUTH_TOKEN }} | docker login --username=${{ env.DOCKER_USERNAME }} --password-stdin
 
           docker pull ${{ env.CONTAINER_IMAGE_NAME }}   
-          docker save -o deploy.tar ${{ env.CONTAINER_IMAGE_NAME }}
+          docker save ${{ env.CONTAINER_IMAGE_NAME }} > deploy.tar
+          gzip deploy.tar
       - name: Deploy to EB
         uses: einaregilsson/beanstalk-deploy@v14
         with:
@@ -82,4 +83,4 @@ jobs:
           environment_name: 'Clansportsservices-env'
           version_label: 'clan-sports-services-latest'
           region: 'us-east-1'
-          deployment_package: deploy.tar
+          deployment_package: deploy.tar.gz

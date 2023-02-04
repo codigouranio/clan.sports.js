@@ -76,7 +76,7 @@ jobs:
           CONTAINER_IMAGE_NAME: ${{ env.DOCKER_USERNAME }}/${{ env.SERVICE_NAME }}:latest
         run: |
           echo "Releasing to Amazon Lightsail"
-          docker info      - name: Login to DockerHub
+          docker info
 
           echo "Authenticating docker.io"
           echo ${{ env.DOCKER_AUTH_TOKEN }} | docker login --username=${{ env.DOCKER_USERNAME }} --password-stdin

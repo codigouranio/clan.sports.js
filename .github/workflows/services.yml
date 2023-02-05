@@ -63,20 +63,17 @@ jobs:
           aws configure set aws_secret_access_key ${{ env.AWS_SECRET_ACCESS_KEY }}
           aws configure set default.region ${{ env.AWS_DEFAULT_REGION }}
           aws configure set region ${{ env.AWS_DEFAULT_REGION }}
-      - name: Login to DockerHub
-        env:
-          DOCKER_AUTH_TOKEN: ${{ secrets.DOCKER_AUTH_TOKEN }}
-          DOCKER_USERNAME: ${{ env.DOCKER_USERNAME }}
-        run: |
-          echo "Authenticating docker.io"
-          echo ${{ env.DOCKER_AUTH_TOKEN }} | docker login --username=${{ env.DOCKER_USERNAME }} --password-stdin
-      - name: Pull from DockerHub
+      - name: Create docker-compose.yml
         env:
           CONTAINER_IMAGE_NAME: ${{ env.DOCKER_USERNAME }}/${{ env.SERVICE_NAME }}:latest
         run: |
-          docker pull ${{ env.CONTAINER_IMAGE_NAME }}
-          docker save ${{ env.CONTAINER_IMAGE_NAME }} > deploy.tar
-          gzip deploy.tar
+          touch docker-compose.yml
+          echo version: '3.8' >> docker-compose.yml
+          echo services: >> docker-compose.xml
+          echo \\tclan-sports-services: >> docker-compose.yml
+          echo \\t\\timage: ${{ CONTAINER_IMAGE_NAME }} >> docker-compose.yml
+          echo \\t\\tports: 3001:3001 >> docker-compose.yml
+          zip -r deploy.zip docker-compose.yml
       - name: Get timestamp
         uses: gerred/actions/current-time@master
         id: current-time

@@ -35,4 +35,5 @@ COPY --from=build /home/node/app/dist ./dist
 COPY --from=build /home/node/app/data ./data
 COPY ./.env ./.env
 
+EXPOSE 3001
 ENTRYPOINT [ "docker-entrypoint.sh" ]

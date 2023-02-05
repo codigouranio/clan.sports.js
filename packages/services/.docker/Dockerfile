@@ -27,7 +27,6 @@ RUN npm i --build-from-source --sqlite=$(dirname "$(which sqlite3)")
 FROM base as build
 COPY --from=dependencies /home/node/app/node_modules ./node_modules
 COPY . ./
-RUN npm run typeorm:db migration:run
 RUN npm run build
 
 FROM base AS release

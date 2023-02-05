@@ -68,6 +68,7 @@ jobs:
           aws configure set default.region ${{ env.AWS_DEFAULT_REGION }}
           aws configure set region ${{ env.AWS_DEFAULT_REGION }}
       - name: Push to Docker
+        run: |
           echo "Authenticating docker.io"
           echo ${{ env.DOCKER_AUTH_TOKEN }} | docker login --username=${{ env.DOCKER_USERNAME }} --password-stdin
 

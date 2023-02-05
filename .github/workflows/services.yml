@@ -67,11 +67,11 @@ jobs:
           aws configure set aws_secret_access_key ${{ env.AWS_SECRET_ACCESS_KEY }}
           aws configure set default.region ${{ env.AWS_DEFAULT_REGION }}
           aws configure set region ${{ env.AWS_DEFAULT_REGION }}
-
+      - name: Push to Docker
           echo "Authenticating docker.io"
           echo ${{ env.DOCKER_AUTH_TOKEN }} | docker login --username=${{ env.DOCKER_USERNAME }} --password-stdin
 
-          docker pull ${{ env.CONTAINER_IMAGE_NAME }}   
+          docker pull ${{ env.CONTAINER_IMAGE_NAME }}
           docker save ${{ env.CONTAINER_IMAGE_NAME }} > deploy.tar
           gzip deploy.tar
       - name: Get timestamp
@@ -90,8 +90,8 @@ jobs:
         with:
           aws_access_key: ${{ secrets.AWS_ACCESS_KEY_ID }}
           aws_secret_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          application_name: 'clan-sports-services'
-          environment_name: 'Clansportsservices-env'
+          application_name: 'clan-sports'
+          environment_name: 'clan-sports-env'
           version_label: 'clan-sports-services-${{ steps.format-time.outputs.replaced }}'
           region: 'us-east-1'
           deployment_package: deploy.tar.gz

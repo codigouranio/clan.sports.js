@@ -71,7 +71,7 @@ jobs:
           echo version: '3.8' >> docker-compose.yml
           echo services: >> docker-compose.xml
           echo \\tclan-sports-services: >> docker-compose.yml
-          echo \\t\\timage: ${{ CONTAINER_IMAGE_NAME }} >> docker-compose.yml
+          echo \\t\\timage: ${{ env.CONTAINER_IMAGE_NAME }} >> docker-compose.yml
           echo \\t\\tports: 3001:3001 >> docker-compose.yml
           zip -r deploy.zip docker-compose.yml
       - name: Get timestamp

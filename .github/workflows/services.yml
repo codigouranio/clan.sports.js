@@ -67,7 +67,7 @@ jobs:
         env:
           CONTAINER_IMAGE_NAME: ${{ env.DOCKER_USERNAME }}/${{ env.SERVICE_NAME }}:latest
         run: |
-          zip -r deploy.zip docker-compose.yml
+          zip -r deploy.zip ./packages/services/.docker/docker-compose.yml
       - name: Get timestamp
         uses: gerred/actions/current-time@master
         id: current-time

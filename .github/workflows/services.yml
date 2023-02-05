@@ -97,4 +97,4 @@ jobs:
           environment_name: 'clan-sports-env'
           version_label: 'clan-sports-services-${{ steps.format-time.outputs.replaced }}'
           region: 'us-east-1'
-          deployment_package: deploy.tar.gz
+          deployment_package: deploy.zip

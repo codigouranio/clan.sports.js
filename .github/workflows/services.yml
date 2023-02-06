@@ -39,7 +39,7 @@ jobs:
         env:
           CONTAINER_IMAGE_NAME: ${{ env.DOCKER_USERNAME }}/${{ env.SERVICE_NAME }}:latest
         run: |
-          zip -r deploy.zip * .[^.]* -x "**node_modules**"
+          zip -r deploy.zip * .[^.]* -x "**node_modules**" -x "**.git**" -x "**.husky**" -x "**.vscode**"
       - uses: actions/upload-artifact@v3
         with:
           name: deploy.zip

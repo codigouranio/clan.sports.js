@@ -78,7 +78,7 @@ jobs:
           aws configure set aws_secret_access_key ${{ env.AWS_SECRET_ACCESS_KEY }}
           aws configure set default.region ${{ env.AWS_DEFAULT_REGION }}
           aws configure set region ${{ env.AWS_DEFAULT_REGION }}
-      - uses: actions/download-artifact@v2
+      - uses: actions/download-artifact@v3
         with:
           name: deploy.zip
       - name: Get timestamp

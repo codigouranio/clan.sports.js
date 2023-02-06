@@ -1,5 +1,5 @@
 ARG NODE_VERSION=19
-FROM node:${NODE_VERSION} as base
+FROM node:19 as base
 
 RUN apt-get update && \
     apt-get install -y \

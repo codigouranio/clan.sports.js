@@ -13,7 +13,7 @@ services:
   # clan-sports-frontend:
   #   container_name: clan-sports-frontend
   #   build:
-  #     context: ./packages/frontend
-  #     dockerfile: ./.docker/Dockerfile
+  #     context: .
+  #     dockerfile: ./packages/frontend/.docker/Dockerfile
   #   ports:
-  #     - '80:3001'
+  #     - '80:3000'

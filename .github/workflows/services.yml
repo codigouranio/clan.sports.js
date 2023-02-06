@@ -41,7 +41,7 @@ jobs:
         run: |
           zip -r deploy.zip ./packages/services
           zip -urj deploy.zip ./packages/services/.docker/*
-      - uses: actions/upload-artifact@v2
+      - uses: actions/upload-artifact@v3
         with:
           name: deploy.zip
           path: deploy.zip

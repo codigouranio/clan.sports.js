@@ -1,0 +1,12 @@
+# docker-compose.prod.yml
+
+version: '3.8'
+
+services:
+  clan-sports-services:
+    container_name: clan-sports-services
+    build:
+      context: ./packages/services
+      dockerfile: ./.docker/Dockerfile
+    ports:
+      - '80:3001'

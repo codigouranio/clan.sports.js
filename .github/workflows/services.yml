@@ -57,6 +57,11 @@ jobs:
       # - name: Push to DockerHub
       #   run: |
       #     docker push ${{ env.DOCKER_USERNAME }}/${{ env.SERVICE_NAME }}:latest
+      # - name: Create docker-compose.yml
+      #   env:
+      #     CONTAINER_IMAGE_NAME: ${{ env.DOCKER_USERNAME }}/${{ env.SERVICE_NAME }}:latest
+      #   run: |
+      #     zip -r deploy.zip ./packages/services
 
   deploy-service-production:
     needs: [build-service]
@@ -73,11 +78,9 @@ jobs:
           aws configure set aws_secret_access_key ${{ env.AWS_SECRET_ACCESS_KEY }}
           aws configure set default.region ${{ env.AWS_DEFAULT_REGION }}
           aws configure set region ${{ env.AWS_DEFAULT_REGION }}
-      # - name: Create docker-compose.yml
-      #   env:
-      #     CONTAINER_IMAGE_NAME: ${{ env.DOCKER_USERNAME }}/${{ env.SERVICE_NAME }}:latest
-      #   run: |
-      #     zip -r deploy.zip ./packages/services
+      - uses: actions/download-artifact@v2
+        with:
+          name: deploy.zip
       - name: Get timestamp
         uses: gerred/actions/current-time@master
         id: current-time
@@ -89,16 +92,16 @@ jobs:
           string: '${{ steps.current-time.outputs.time }}'
           replace-with: '-'
           flags: 'g'
-      # - name: Deploy to EB
-      #   env:
-      #     AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-      #     AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-      #   uses: einaregilsson/beanstalk-deploy@v14
-      #   with:
-      #     aws_access_key: ${{ secrets.AWS_ACCESS_KEY_ID }}
-      #     aws_secret_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-      #     application_name: 'clan-sports'
-      #     environment_name: 'clan-sports-env'
-      #     version_label: 'clan-sports-services-${{ steps.format-time.outputs.replaced }}'
-      #     region: 'us-east-1'
-      #     deployment_package: deploy.zip
+      - name: Deploy to EB
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        uses: einaregilsson/beanstalk-deploy@v14
+        with:
+          aws_access_key: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws_secret_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          application_name: 'clan-sports'
+          environment_name: 'clan-sports-env'
+          version_label: 'clan-sports-services-${{ steps.format-time.outputs.replaced }}'
+          region: 'us-east-1'
+          deployment_package: deploy.zip

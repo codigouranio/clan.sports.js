@@ -1,4 +1,3 @@
-ARG NODE_VERSION=19
 FROM node:19 as base
 
 RUN apt-get update && \

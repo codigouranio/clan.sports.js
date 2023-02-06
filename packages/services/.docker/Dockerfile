@@ -1,46 +1,38 @@
-FROM node:19 as base
+FROM node:19-alpine as base
 
-RUN apt-get update && \
-    apt-get install -y \
-      curl \
-      jq \
-      git \
-      wget \
-      openssl \
-      bash \
-      tar \
-      sqlite3 \
-      git gcc g++ make python2 python2-dev \
-      net-tools && \
-    rm -rf /var/lib/apt/lists/* && \
-    apt-get clean
+RUN apk update && apk upgrade
+# RUN apk add python
+RUN apk add --no-cache \ 
+  make gcc g++ py3-pip python3 \
+  python3-dev git gyp sqlite
+  
+RUN pip3 install --upgrade pip
 
 RUN npm install -g npm@9.4.1
 RUN npm install -g @nestjs/cli@9.0.0
 WORKDIR /home/node/app/
 
 FROM base AS dependencies
-COPY ./package.json .
-COPY ./packages/services/package.json ./packages/services/package.json
-RUN npm i --build-from-source --sqlite=$(dirname "$(which sqlite3)") --no-scripts
+
+COPY ./packages/services/package.json .
+# RUN npm i --no-scripts --build-from-source --sqlite=$(dirname "$(which sqlite3)")
+RUN npm i --no-scripts --sqlite=/usr/local
 
 FROM base as build
-COPY . ./
-COPY --from=dependencies /home/node/app/node_modules ./node_modules
-COPY --from=dependencies /home/node/app/packages/services/node_modules ./packages/services/node_modules
-RUN npm run services:build
+COPY ./packages/services .
+COPY --from=dependencies /home/node/app/node_modules/ ./node_modules
+RUN npm run build
 
 FROM base AS release
-COPY --from=dependencies /home/node/app/node_modules ./node_modules
-COPY --from=dependencies /home/node/app/packages/services/node_modules ./packages/services/node_modules
-COPY --from=build /home/node/app/packages/services/dist /home/node/app/packages/services/dist
-COPY --from=build /home/node/app/packages/services/data /home/node/app/packages/services/data
-COPY --from=build /home/node/app/packages/services/.docker /home/node/app/packages/services/.docker
-COPY --from=build /home/node/app/packages/services/.env /home/node/app/packages/services/.env
+COPY --from=dependencies /home/node/app/node_modules/ ./node_modules
+COPY --from=build /home/node/app/dist/ /home/node/app/dist
+COPY --from=build /home/node/app/data/ /home/node/app/data
+COPY --from=build /home/node/app/.docker/ /home/node/app/.docker
+COPY --from=build /home/node/app/.env /home/node/app
 
 EXPOSE 3001
 
-RUN mv ./packages/services/.docker/docker-entrypoint.sh /usr/local/bin/
+RUN mv ./.docker/docker-entrypoint.sh /usr/local/bin/
 RUN chmod +x /usr/local/bin/docker-entrypoint.sh
 
 ENTRYPOINT [ "docker-entrypoint.sh" ]

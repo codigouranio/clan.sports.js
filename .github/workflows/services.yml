@@ -39,8 +39,8 @@ jobs:
         env:
           CONTAINER_IMAGE_NAME: ${{ env.DOCKER_USERNAME }}/${{ env.SERVICE_NAME }}:latest
         run: |
-          zip -r deploy.zip ./packages/services
-          zip -ur deploy.zip ./packages/services/.docker/*
+          (cd ./packages/services && zip -r deploy.zip ./packages/services)
+          zip -urj deploy.zip ./packages/services/.docker/*
       - uses: actions/upload-artifact@v3
         with:
           name: deploy.zip

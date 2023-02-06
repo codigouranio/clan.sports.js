@@ -39,9 +39,10 @@ jobs:
         env:
           CONTAINER_IMAGE_NAME: ${{ env.DOCKER_USERNAME }}/${{ env.SERVICE_NAME }}:latest
         run: |
-          (cd ./packages/services && zip -r ../../deploy.zip * .[^.]* -x "**node_modules**")
-          zip -urj ./deploy.zip ./docker-compose.yml
-          zip -urj ./deploy.zip ./packages/services/.docker/*
+          zip -r ../../deploy.zip * .[^.]* -x "**node_modules**"
+          # (cd ./packages/services && zip -r ../../deploy.zip * .[^.]* -x "**node_modules**")
+          # zip -urj ./deploy.zip ./docker-compose.yml
+          # zip -urj ./deploy.zip ./packages/services/.docker/*
       - uses: actions/upload-artifact@v3
         with:
           name: deploy.zip

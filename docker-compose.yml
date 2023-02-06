@@ -6,7 +6,14 @@ services:
   clan-sports-services:
     container_name: clan-sports-services
     build:
-      context: ./packages/services
+      context: .
+      dockerfile: ./packages/services/.docker/Dockerfile
+    ports:
+      - '80:3001'
+  clan-sports-frontend:
+    container_name: clan-sports-frontend
+    build:
+      context: ./packages/frontend
       dockerfile: ./.docker/Dockerfile
     ports:
       - '80:3001'

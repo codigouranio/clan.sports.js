@@ -92,7 +92,7 @@ jobs:
       - uses: actions/download-artifact@v3
         with:
           name: deploy.zip
-      - uses: rename deploy file to version
+      - name: Rename deploy file to version
         run: |
           mv deploy.zip deploy-${{ steps.format-time.outputs.replaced }}.zip
       - name: Deploy to EB

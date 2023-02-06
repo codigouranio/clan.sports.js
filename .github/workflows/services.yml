@@ -35,18 +35,28 @@ jobs:
       - run: npm ci
       - name: Run tests
         run: npm run services:test
-      - name: Build docker image
-        run: npm run services:docker:build
-      - name: Login to DockerHub
+      - name: Create deploy file
         env:
-          DOCKER_AUTH_TOKEN: ${{ secrets.DOCKER_AUTH_TOKEN }}
-          DOCKER_USERNAME: ${{ env.DOCKER_USERNAME }}
+          CONTAINER_IMAGE_NAME: ${{ env.DOCKER_USERNAME }}/${{ env.SERVICE_NAME }}:latest
         run: |
-          echo "Authenticating docker.io"
-          echo ${{ env.DOCKER_AUTH_TOKEN }} | docker login --username=${{ env.DOCKER_USERNAME }} --password-stdin
-      - name: Push to DockerHub
-        run: |
-          docker push ${{ env.DOCKER_USERNAME }}/${{ env.SERVICE_NAME }}:latest
+          zip -r deploy.zip ./packages/services
+          zip -urj deploy.zip ./packages/services/.docker/*
+      - uses: actions/upload-artifact@v2
+        with:
+          name: deploy.zip
+          path: deploy.zip
+      # - name: Build docker image
+      #   run: npm run services:docker:build
+      # - name: Login to DockerHub
+      #   env:
+      #     DOCKER_AUTH_TOKEN: ${{ secrets.DOCKER_AUTH_TOKEN }}
+      #     DOCKER_USERNAME: ${{ env.DOCKER_USERNAME }}
+      #   run: |
+      #     echo "Authenticating docker.io"
+      #     echo ${{ env.DOCKER_AUTH_TOKEN }} | docker login --username=${{ env.DOCKER_USERNAME }} --password-stdin
+      # - name: Push to DockerHub
+      #   run: |
+      #     docker push ${{ env.DOCKER_USERNAME }}/${{ env.SERVICE_NAME }}:latest
 
   deploy-service-production:
     needs: [build-service]
@@ -63,11 +73,11 @@ jobs:
           aws configure set aws_secret_access_key ${{ env.AWS_SECRET_ACCESS_KEY }}
           aws configure set default.region ${{ env.AWS_DEFAULT_REGION }}
           aws configure set region ${{ env.AWS_DEFAULT_REGION }}
-      - name: Create docker-compose.yml
-        env:
-          CONTAINER_IMAGE_NAME: ${{ env.DOCKER_USERNAME }}/${{ env.SERVICE_NAME }}:latest
-        run: |
-          zip -r deploy.zip ./packages/services/.docker/docker-compose.yml
+      # - name: Create docker-compose.yml
+      #   env:
+      #     CONTAINER_IMAGE_NAME: ${{ env.DOCKER_USERNAME }}/${{ env.SERVICE_NAME }}:latest
+      #   run: |
+      #     zip -r deploy.zip ./packages/services
       - name: Get timestamp
         uses: gerred/actions/current-time@master
         id: current-time
@@ -79,16 +89,16 @@ jobs:
           string: '${{ steps.current-time.outputs.time }}'
           replace-with: '-'
           flags: 'g'
-      - name: Deploy to EB
-        env:
-          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-        uses: einaregilsson/beanstalk-deploy@v14
-        with:
-          aws_access_key: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          aws_secret_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          application_name: 'clan-sports'
-          environment_name: 'clan-sports-env'
-          version_label: 'clan-sports-services-${{ steps.format-time.outputs.replaced }}'
-          region: 'us-east-1'
-          deployment_package: deploy.zip
+      # - name: Deploy to EB
+      #   env:
+      #     AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+      #     AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+      #   uses: einaregilsson/beanstalk-deploy@v14
+      #   with:
+      #     aws_access_key: ${{ secrets.AWS_ACCESS_KEY_ID }}
+      #     aws_secret_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+      #     application_name: 'clan-sports'
+      #     environment_name: 'clan-sports-env'
+      #     version_label: 'clan-sports-services-${{ steps.format-time.outputs.replaced }}'
+      #     region: 'us-east-1'
+      #     deployment_package: deploy.zip

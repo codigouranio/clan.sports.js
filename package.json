@@ -1,7 +1,7 @@
 {
   "name": "clan.sports",
   "private": true,
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Clan Sports is a project developed by the @codigouranio/clan.sports community that seeks to provide the opportunity for the children's, to show each and everyone of your sporting achievements during your youth stage",
   "scripts": {
     "services:prebuild": "npm run prebuild --workspace=services",

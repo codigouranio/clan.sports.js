@@ -1,13 +1,13 @@
 version: '3.8'
 
 services:
-  # clan-sports-services:
-  #   container_name: clan-sports-services
-  #   build:
-  #     context: .
-  #     dockerfile: ./packages/services/.docker/Dockerfile.services
-  #   ports:
-  #     - '80:3001'
+  clan-sports-services:
+    container_name: clan-sports-services
+    build:
+      context: .
+      dockerfile: ./packages/services/.docker/Dockerfile.services
+    ports:
+      - '3001:3001'
   clan-sports-frontend:
     container_name: clan-sports-frontend
     build:

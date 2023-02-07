@@ -8,7 +8,7 @@ services:
       context: .
       dockerfile: ./packages/services/.docker/Dockerfile.services
     ports:
-      - '3001:3001'
+      - '80:3001'
   # clan-sports-frontend:
   #   container_name: clan-sports-frontend
   #   restart: always

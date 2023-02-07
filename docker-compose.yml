@@ -1,19 +1,19 @@
 version: '3.8'
 
 services:
-  clan-sports-services:
-    container_name: clan-sports-services
-    restart: always
-    build:
-      context: .
-      dockerfile: ./packages/services/.docker/Dockerfile.services
-    ports:
-      - '80:3001'
-  # clan-sports-frontend:
-  #   container_name: clan-sports-frontend
+  # clan-sports-services:
+  #   container_name: clan-sports-services
   #   restart: always
   #   build:
   #     context: .
-  #     dockerfile: ./packages/frontend/.docker/Dockerfile.frontend
+  #     dockerfile: ./packages/services/.docker/Dockerfile.services
   #   ports:
-  #     - '80:3000'
+  #     - '80:3001'
+  clan-sports-frontend:
+    container_name: clan-sports-frontend
+    restart: always
+    build:
+      context: .
+      dockerfile: ./packages/frontend/.docker/Dockerfile.frontend
+    ports:
+      - '80:3000'

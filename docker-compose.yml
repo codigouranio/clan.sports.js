@@ -9,11 +9,11 @@ services:
       context: .
       dockerfile: ./packages/services/.docker/Dockerfile.services
     ports:
-      - '3001:3001'
-  clan-sports-frontend:
-    container_name: clan-sports-frontend
-    build:
-      context: .
-      dockerfile: ./packages/frontend/.docker/Dockerfile.frontend
-    ports:
-      - '80:3000'
+      - '80:3001'
+  # clan-sports-frontend:
+  #   container_name: clan-sports-frontend
+  #   build:
+  #     context: .
+  #     dockerfile: ./packages/frontend/.docker/Dockerfile.frontend
+  #   ports:
+  #     - '80:3000'

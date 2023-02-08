@@ -17,7 +17,7 @@ env:
   AWS_DEFAULT_REGION: 'us-east-1'
 
 jobs:
-  services-build-and-publish-docker:
+  build-and-publish-docker:
     runs-on: ubuntu-latest
     environment: development
     steps:
@@ -41,46 +41,76 @@ jobs:
         with:
           username: ${{ env.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_AUTH_TOKEN }}
-      - name: Build and push
+      - name: Build and push services
         uses: docker/build-push-action@v4
         with:
           context: .
           file: packages/services/.docker/Dockerfile
           push: true
           tags: codigouranio/clan-sports-services:latest
-
-  frontend-build-and-publish-docker:
-    runs-on: ubuntu-latest
-    environment: development
-    steps:
-      - name: checkout
-        uses: actions/checkout@v3
-        with:
-          ref: ${{ github.head_ref }}
-      - name: restore_or_save_cache
-        uses: actions/cache@v3
-        with:
-          path: ~/.npm
-          key: ${{ runner.os }}-v1-dependencies-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-v1-dependencies-
-      - name: Set up QEMU
-        uses: docker/setup-qemu-action@v2
-      - name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v2
-      - name: Login to Docker Hub
-        uses: docker/login-action@v2
-        with:
-          username: ${{ env.DOCKER_USERNAME }}
-          password: ${{ secrets.DOCKER_AUTH_TOKEN }}
-      - name: Build and push
+      - name: Build and push frontend
         uses: docker/build-push-action@v4
         with:
           context: .
           file: packages/frontend/.docker/Dockerfile
           push: true
           tags: codigouranio/clan-sports-frontend:latest
+      - name: Create deploy file
+        env:
+          CONTAINER_IMAGE_NAME: ${{ env.DOCKER_USERNAME }}/${{ env.SERVICE_NAME }}:latest
+        run: |
+          zip -rj deploy.zip docker-compose.yml
+      - uses: actions/upload-artifact@v3
+        with:
+          name: deploy.zip
+          path: deploy.zip
 
+  deploy-service-production:
+    needs: [build-and-publish-docker]
+    runs-on: ubuntu-latest
+    environment: development
+    steps:
+      - uses: actions/download-artifact@v3
+        with:
+          name: deploy.zip
+      - name: Deploy to EB
+        env:
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        uses: einaregilsson/beanstalk-deploy@v14
+        with:
+          aws_access_key: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws_secret_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          application_name: 'clan-sports'
+          environment_name: 'clan-sports-env'
+          version_label: 'latest'
+          region: 'us-east-1'
+          deployment_package: deploy.zip
+
+      # - name: Rename deploy file to version
+      #   run: |
+      #     mv deploy.zip deploy-${{ steps.format-time.outputs.replaced }}.zip
+      # - name: Prerequisites
+      #   env:
+      #     AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+      #     AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+      #     AWS_DEFAULT_REGION: 'us-east-1'
+      #   run: |
+      #     aws configure set aws_access_key_id ${{ env.AWS_ACCESS_KEY_ID }}
+      #     aws configure set aws_secret_access_key ${{ env.AWS_SECRET_ACCESS_KEY }}
+      #     aws configure set default.region ${{ env.AWS_DEFAULT_REGION }}
+      #     aws configure set region ${{ env.AWS_DEFAULT_REGION }}
+      # - name: Get timestamp
+      #   uses: gerred/actions/current-time@master
+      #   id: current-time
+      # - name: Run string replace
+      #   uses: frabert/replace-string-action@master
+      #   id: format-time
+      #   with:
+      #     pattern: '[:\.]+'
+      #     string: '${{ steps.current-time.outputs.time }}'
+      #     replace-with: '-'
+      #     flags: 'g'
   # build-service:
   #   runs-on: ubuntu-latest
   #   environment: development
@@ -173,3 +203,35 @@ jobs:
   #     CONTAINER_IMAGE_NAME: ${{ env.DOCKER_USERNAME }}/${{ env.SERVICE_NAME }}:latest
   #   run: |
   #     zip -r deploy.zip ./packages/services
+
+  #  frontend-build-and-publish-docker:
+  #   runs-on: ubuntu-latest
+  #   environment: development
+  #   steps:
+  #     - name: checkout
+  #       uses: actions/checkout@v3
+  #       with:
+  #         ref: ${{ github.head_ref }}
+  #     - name: restore_or_save_cache
+  #       uses: actions/cache@v3
+  #       with:
+  #         path: ~/.npm
+  #         key: ${{ runner.os }}-v1-dependencies-${{ hashFiles('**/package-lock.json') }}
+  #         restore-keys: |
+  #           ${{ runner.os }}-v1-dependencies-
+  #     - name: Set up QEMU
+  #       uses: docker/setup-qemu-action@v2
+  #     - name: Set up Docker Buildx
+  #       uses: docker/setup-buildx-action@v2
+  #     - name: Login to Docker Hub
+  #       uses: docker/login-action@v2
+  #       with:
+  #         username: ${{ env.DOCKER_USERNAME }}
+  #         password: ${{ secrets.DOCKER_AUTH_TOKEN }}
+  #     - name: Build and push
+  #       uses: docker/build-push-action@v4
+  #       with:
+  #         context: .
+  #         file: packages/frontend/.docker/Dockerfile
+  #         push: true
+  #         tags: codigouranio/clan-sports-frontend:latest

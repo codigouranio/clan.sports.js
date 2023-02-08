@@ -8,7 +8,7 @@ on:
         required: true
   push:
     branches:
-      - development
+      - staging
 
 env:
   NODE_ENV: 'dev'

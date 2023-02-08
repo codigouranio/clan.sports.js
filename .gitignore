@@ -39,7 +39,6 @@ coverage
 # sqlite
 *.sql-shm
 *.sql-wal
-mydb.sql
 
 # dependencies
 .pnp

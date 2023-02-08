@@ -34,7 +34,7 @@ jobs:
         uses: docker/build-push-action@v4
         with:
           context: .
-          file: ./packages/services/.docker/Dockerfile
+          file: packages/services/.docker/Dockerfile
           push: true
           tags: codigouranio/clan-sports-services:latest
 

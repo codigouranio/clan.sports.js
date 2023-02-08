@@ -8,6 +8,7 @@ const Home: NextPage = () => {
   return (
     <MainLayout>
       <Heading>Home Page</Heading>
+      <h1>HOLA!</h1>
     </MainLayout>
   );
 };

@@ -8,7 +8,7 @@ import logo from '/public/logo_cs_negro.svg';
 
 export const LogoNav: React.FC = () => {
   return (
-    <Box maxWidth="100px">
+    <Box maxWidth="70px">
       <Image src={logo} alt="Logo Clan Sports" />
     </Box>
   );

@@ -1,3 +1,6 @@
+/*
+ * Component Icon Discord with link server discord
+ * */
 import { Icon } from '@chakra-ui/react';
 import Link from 'next/link';
 import { FaDiscord } from 'react-icons/fa';
@@ -7,6 +10,7 @@ interface Props {
   height: number | string;
   color: string;
   cursorPointer: 'pointer';
+  href?: string;
   colorHover?: string;
 }
 
@@ -16,10 +20,11 @@ export const IconDiscord: React.FC<Props> = ({
   color,
   cursorPointer,
   colorHover,
+  href,
 }) => {
   return (
     <Link
-      href="https://discord.gg/eED2UD7c"
+      href={href || 'https://discord.com/'}
       target="_blank"
       rel="noopener noreferrer"
     >

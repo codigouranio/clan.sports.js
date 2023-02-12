@@ -1,5 +1,8 @@
 import { extendTheme } from '@chakra-ui/react';
 
+export const gradientClan =
+  'linear(to-br, clan.300,clan.400,clan.500,clan.600,clan.700)';
+
 const theme = extendTheme({
   fonts: {
     heading: 'Inter',
@@ -24,7 +27,7 @@ const theme = extendTheme({
         borderRadius: 'xl',
       },
       variants: {
-        solid: {
+        form: {
           width: '100%',
         },
       },

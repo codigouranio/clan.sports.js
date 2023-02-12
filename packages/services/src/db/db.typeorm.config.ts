@@ -1,9 +1,12 @@
 import { DataSource, DataSourceOptions } from 'typeorm';
+import { getDefaultLibFileName } from 'typescript';
+
+import { root } from '../paths';
 
 export const dbConfig: DataSourceOptions = {
-  type: 'better-sqlite3',
+  type: 'sqlite',
   name: 'connection',
-  database: `${__dirname}/db.sqlite`,
+  database: `${root}/data/db.sqlite`,
   dropSchema: true,
   synchronize: true,
   migrations: [`${__dirname}/migrations/*.ts`],

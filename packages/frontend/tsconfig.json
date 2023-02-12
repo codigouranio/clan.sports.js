@@ -1,5 +1,4 @@
 {
-  "extends": "../../tsconfig.json",
   "compilerOptions": {
     "target": "es5",
     "lib": ["dom", "dom.iterable", "esnext"],
@@ -23,7 +22,9 @@
       {
         "name": "next"
       }
-    ]
+    ],
+    "incremental": true,
+    "skipLibCheck": true
   },
   "include": [
     "next-env.d.ts",

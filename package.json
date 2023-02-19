@@ -25,7 +25,11 @@
     "frontend:lint": "npm run lint --workspace=frontend",
     "frontend:format": "npm run format --workspace=frontend",
     "frontend:test": "npm run test --workspace=frontend",
-    "frontend:test:ci": "npm run test:ci --worspace=frontend",
+    "frontend:test:ci": "npm run test:ci --workspace=frontend",
+    "frontend:e2e": "npm run e2e --workspace=frontend",
+    "frontend:e2e:headless": "npm run e2e:headless --workspace=frontend",
+    "frontend:component": "npm run component --workspace=frontend",
+    "frontend:component:headless": "npm run component:headless --workspace=frontend",
     "frontend:storybook": "npm run storybook --worspace=frontend",
     "frontend:build-storybook": "npm run build-storybook --workspace=frontend",
     "prepare": "husky install"

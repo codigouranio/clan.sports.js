@@ -1,9 +1,55 @@
 import { extendTheme } from '@chakra-ui/react';
+import { StyleFunctionProps, mode } from '@chakra-ui/theme-tools';
+import '@fontsource/blinker';
 
 export const gradientClan =
   'linear(to-br, clan.300,clan.400,clan.500,clan.600,clan.700)';
 
 const theme = extendTheme({
+  styles: {
+    global: (props: StyleFunctionProps) => ({
+      body: {
+        overflowX: 'hidden',
+        margin: '0px',
+      },
+      main: {
+        width: '100vw',
+        height: '900vw',
+        zIndex: '99',
+        position: 'absolute',
+        justifyContent: 'center',
+        textAlign: 'center',
+        pointerEvents: 'none',
+        fontSize: '8vh',
+        background:
+          'linear-gradient(180deg, rgba(12,165,255,1) 0%, rgba(8,126,255,1) 22%, rgba(4,74,255,1) 100%)',
+        '.progressBar': {
+          position: 'fixed',
+          top: '0',
+          left: '0',
+          right: '0',
+          height: '10px',
+          background: 'rgba(0,237,255,0.5972514005602241)',
+          transformOrigin: '0%',
+        },
+      },
+      section: {
+        fontFamily: `blinker, sans-serif`,
+        minHeight: '100vh',
+        padding: '20px',
+        fontSize: '3vh',
+        h1: {
+          color: 'white',
+          fontSize: '10vh',
+          fontWeight: 'bold',
+        },
+        h2: {
+          color: 'white',
+          fontSize: '3vh',
+        },
+      },
+    }),
+  },
   fonts: {
     heading: 'Inter',
     body: 'Inter',

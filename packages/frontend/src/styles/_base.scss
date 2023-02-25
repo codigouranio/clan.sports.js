@@ -1,0 +1,40 @@
+@use '/styles/variables' as *;
+
+html {
+}
+
+body {
+  background: rgb(4, 74, 255);
+  background: linear-gradient(
+    90deg,
+    rgba(4, 74, 255, 1) 0%,
+    rgba(8, 126, 255, 1) 22%,
+    rgba(12, 165, 255, 1) 100%
+  );
+  overflow-x: hidden;
+  margin: 0px;
+  font-family: monospace;
+}
+
+canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+
+main {
+  width: 100vw;
+  height: 200vw;
+  z-index: 99;
+  position: absolute;
+  justify-content: center;
+  text-align: center;
+  pointer-events: none;
+  font-size: 5vh;
+}
+
+section {
+  min-height: 100vh;
+  padding: 20px;
+  font-size: 4vh;
+}

@@ -36,6 +36,8 @@
     "@chakra-ui/react": "^2.4.1",
     "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11.10.5",
+    "@fontsource/blinker": "^4.5.9",
+    "@fontsource/mako": "^4.5.8",
     "@types/node": "18.11.9",
     "@types/react": "18.0.25",
     "@types/react-dom": "18.0.9",
@@ -43,7 +45,8 @@
     "next": "13.0.4",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "react-query": "^3.39.3"
+    "react-query": "^3.39.3",
+    "sass": "^1.58.3"
   },
   "devDependencies": {
     "@babel/core": "^7.20.2",

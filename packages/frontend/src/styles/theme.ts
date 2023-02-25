@@ -36,16 +36,17 @@ const theme = extendTheme({
       section: {
         fontFamily: `blinker, sans-serif`,
         minHeight: '100vh',
-        padding: '20px',
-        fontSize: '3vh',
+        padding: '120px',
+        fontSize: '5vh',
         h1: {
           color: 'white',
           fontSize: '10vh',
-          fontWeight: 'bold',
+          fontWeight: '800',
         },
         h2: {
           color: 'white',
           fontSize: '3vh',
+          fontWeight: '900',
         },
       },
     }),

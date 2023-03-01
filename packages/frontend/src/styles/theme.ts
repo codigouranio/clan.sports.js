@@ -14,7 +14,7 @@ const theme = extendTheme({
       },
       main: {
         width: '100vw',
-        height: '900vw',
+        height: '700vw',
         zIndex: '99',
         position: 'absolute',
         justifyContent: 'center',

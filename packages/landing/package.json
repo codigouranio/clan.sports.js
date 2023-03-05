@@ -1,0 +1,76 @@
+{
+  "name": "frontend",
+  "private": true,
+  "version": "1.0.1",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/codigouranio/clan.sports.git"
+  },
+  "keywords": [
+    "social-network",
+    "sports",
+    "business-solutions"
+  ],
+  "author": "codigouranio",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/codigouranio/clan.sports/issues"
+  },
+  "homepage": "https://github.com/codigouranio/clan.sports#readme",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "format": "prettier --write \"{pages,components,lib,src}/**/*.{ts,tsx,css,mdx}\"",
+    "test": "jest --watch",
+    "test:ci": "jest --ci",
+    "e2e": "start-server-and-test dev http://localhost:3000 \"cypress open --e2e\"",
+    "e2e:headless": "start-server-and-test dev http://localhost:3000 \"cypress run --e2e\"",
+    "component": "cypress open --component",
+    "component:headless": "cypress run --component",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook"
+  },
+  "dependencies": {
+    "@chakra-ui/react": "^2.4.1",
+    "@emotion/react": "^11.10.5",
+    "@emotion/styled": "^11.10.5",
+    "@fontsource/blinker": "^4.5.9",
+    "@fontsource/mako": "^4.5.8",
+    "@react-spring/parallax": "^9.7.1",
+    "@react-spring/web": "^9.7.1",
+    "@types/node": "18.11.9",
+    "@types/react": "18.0.25",
+    "@types/react-dom": "18.0.9",
+    "framer-motion": "^6.5.1",
+    "next": "13.0.4",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "react-query": "^3.39.3",
+    "sass": "^1.58.3"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.20.2",
+    "@chakra-ui/icons": "2.0.11",
+    "@storybook/addon-actions": "^6.5.13",
+    "@storybook/addon-essentials": "^6.5.13",
+    "@storybook/addon-interactions": "^6.5.13",
+    "@storybook/addon-links": "^6.5.13",
+    "@storybook/builder-webpack5": "^6.5.13",
+    "@storybook/manager-webpack5": "^6.5.13",
+    "@storybook/react": "^6.5.13",
+    "@storybook/testing-library": "^0.0.13",
+    "@testing-library/jest-dom": "5.16.4",
+    "@testing-library/react": "13.2.0",
+    "@testing-library/user-event": "14.2.0",
+    "babel-loader": "^8.3.0",
+    "cypress": "12.5.1",
+    "eslint-config-next": "13.0.4",
+    "eslint-plugin-storybook": "^0.6.7",
+    "eslint-plugin-testing-library": "^5.9.1",
+    "jest-environment-jsdom": "28.1.0",
+    "react-icons": "4.6.0",
+    "zustand": "^4.3.3"
+  }
+}

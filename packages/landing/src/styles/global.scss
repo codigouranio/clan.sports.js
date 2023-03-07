@@ -39,16 +39,22 @@ body {
   font-size: 5vh;
 
   h1 {
-    color: white;
     font-size: 25vh;
     font-weight: 600;
     letter-spacing: -0.1rem;
     margin-bottom: -25px;
     text-align: center;
+    background: radial-gradient(#ffffff, #a3c0e4);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
   }
 
   h2 {
-    color: rgb(195, 195, 195);
+    // color: rgb(195, 195, 195);
+    background: linear-gradient(#eee, #bddcfe);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+
     font-size: 7vh;
     font-weight: 500;
     margin-top: 0px;
@@ -59,12 +65,12 @@ body {
 .section {
   font-family: 'blinker', 'sans-serif';
   min-height: 100vh;
-  padding: 120px;
+  padding: 100px;
   font-size: 5vh;
 
   h1 {
     color: white;
-    font-size: 15vh;
+    font-size: 5vh;
     font-weight: 600;
     letter-spacing: -0.1rem;
   }

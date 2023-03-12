@@ -35,7 +35,47 @@ const Home: NextPage = () => {
 
   return (
     <>
-      <Parallax pages={10} className="main" ref={parallax}>
+      <Parallax pages={4} className="main" ref={parallax}>
+        {/* 
+        <ParallaxLayer
+          offset={5}
+          speed={-0.4}
+          style={{
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            pointerEvents: 'none',
+          }}
+        >
+          <Image
+            src={'/chicas.svg'}
+            style={{ height: '60%', width: '60%' }}
+            width={100}
+            height={200}
+            alt="chicas"
+          />
+        </ParallaxLayer>
+
+
+        <ParallaxLayer
+          offset={8}
+          speed={-0.4}
+          style={{
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            pointerEvents: 'none',
+          }}
+        >
+          <Image
+            src={'/fans.svg'}
+            style={{ height: '60%', width: '60%' }}
+            width={100}
+            height={200}
+            alt="fans"
+          />
+        </ParallaxLayer> */}
+
         <ParallaxLayer className="logo" offset={0}>
           <motion.div
             initial={{ scale: 10, opacity: 0 }}
@@ -46,8 +86,8 @@ const Home: NextPage = () => {
             <h1>CLAN</h1>
           </motion.div>
           <motion.div
-            initial={{ translateX: -1000 }}
-            animate={{ translateX: 0 }}
+            initial={{ translateX: -1000, opacity: 0 }}
+            animate={{ translateX: 0, opacity: 1 }}
             style={{ opacity, scale }}
             transition={{ ease: 'easeOut', duration: 2, delay: 1 }}
           >
@@ -55,30 +95,71 @@ const Home: NextPage = () => {
           </motion.div>
         </ParallaxLayer>
         <ParallaxLayer
+          offset={1}
+          speed={-0.4}
+          style={{
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            pointerEvents: 'none',
+          }}
+        >
+          <Image
+            src={'/primera.svg'}
+            style={{ height: '100%', width: '100%' }}
+            width={100}
+            height={200}
+            alt="primera"
+          />
+        </ParallaxLayer>
+
+        <ParallaxLayer
           className="section"
           offset={1}
-          speed={1.5}
-          sticky={{ start: 1, end: 2 }}
+          speed={1}
+          sticky={{ start: 1, end: 1 }}
         >
           <h1>Where sports achievements live on forever.</h1>
         </ParallaxLayer>
+
+        <ParallaxLayer
+          offset={2}
+          speed={-0.3}
+          style={{
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            pointerEvents: 'none',
+          }}
+          sticky={{ start: 2, end: 3 }}
+        >
+          <Image
+            src={'/pistas.svg'}
+            style={{ height: '100%', width: '100%' }}
+            width={100}
+            height={200}
+            alt="pistas"
+          />
+        </ParallaxLayer>
+
         <ParallaxLayer
           className="section"
           offset={2}
-          speed={1.5}
-          sticky={{ start: 3, end: 4 }}
+          speed={1}
+          style={{ zIndex: '900' }}
         >
-          <h1>Making it easy to track their sports success.</h1>
+          <h1 style={{ zIndex: '900' }}>
+            Helping young athletes reach their full potential.
+          </h1>
+          <h2>and making it easy to track their sports success.</h2>
         </ParallaxLayer>
-        <ParallaxLayer
-          className="section"
-          offset={3}
-          speed={1.5}
-          sticky={{ start: 5, end: 6 }}
-        >
+        <ParallaxLayer className="section" offset={3} speed={1}>
           <h1>Record their journey to greatness.</h1>
-          <p>A lifetime of achievements, all in one place.</p>
+          <h2>A lifetime of achievements, all in one place.</h2>
         </ParallaxLayer>
+
+        {/* 
+
         <ParallaxLayer
           className="section"
           offset={5}
@@ -87,14 +168,13 @@ const Home: NextPage = () => {
         >
           <h1>Helping young athletes reach their full potential.</h1>
           <p>Join us!</p>
-          <p>About</p>
         </ParallaxLayer>
         <ParallaxLayer
           className="section"
           offset={8}
           speed={1.5}
           sticky={{ start: 8, end: 10 }}
-        ></ParallaxLayer>
+        ></ParallaxLayer> */}
       </Parallax>
     </>
   );

@@ -70,14 +70,21 @@ body {
 
   h1 {
     color: white;
-    font-size: 5vh;
-    font-weight: 600;
+    font-size: 7vh;
+    font-weight: 900;
     letter-spacing: -0.1rem;
   }
 
   h2 {
     color: white;
-    font-size: 3vh;
+    font-size: 5vh;
+    font-weight: 600;
+    padding: 5vh;
+  }
+
+  p {
+    color: rgb(221, 221, 221);
+    font-size: 4vh;
     font-weight: 900;
     padding: 5vh;
   }

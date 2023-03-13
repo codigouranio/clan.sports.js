@@ -1,0 +1,223 @@
+:root {
+  --red: rgb(255, 181, 180);
+  --white: #fff;
+  --black: #000;
+  --blue: #7676ff;
+  --gray: #8c8c8c;
+}
+
+body {
+  overflow-x: hidden;
+  margin: 0px;
+}
+
+.main {
+  justify-content: center;
+  font-size: 8vh;
+  background: linear-gradient(
+    180deg,
+    rgba(12, 165, 255, 1) 0%,
+    rgba(8, 126, 255, 1) 22%,
+    rgba(4, 74, 255, 1) 100%
+  );
+  .progress-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 10px;
+    background: rgba(0, 237, 255, 0.5972514005602241);
+    transform-origin: 0%;
+  }
+}
+
+.box {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  background: 'red' !important;
+}
+
+.logo {
+  font-family: 'blinker', 'sans-serif';
+  min-height: 120vw;
+  padding-top: 1vh;
+  margin-top: -5vw;
+  padding-top: 0vw;
+  font-size: 5vw;
+  z-index: 900;
+
+  h1 {
+    font-size: 25vw;
+    font-weight: 600;
+    letter-spacing: -0.1rem;
+    margin-bottom: -25px;
+    text-align: center;
+    background: radial-gradient(#ffffff, #a3c0e4);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  h2 {
+    // color: rgb(195, 195, 195);
+    background: linear-gradient(#eee, #bddcfe);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+    font-size: 7vw;
+    font-weight: 500;
+    margin-top: 0px;
+    text-align: center;
+  }
+}
+
+.section-image {
+  z-index: -1;
+}
+
+.section {
+  font-family: 'blinker', 'sans-serif';
+  min-height: 100vw;
+  padding: 5vw;
+  font-size: 5vw;
+  width: 80% !important;
+  z-index: 900;
+  text-shadow: 0 0 2px #888;
+
+  h1 {
+    color: white;
+    font-size: 7vw;
+    font-weight: 900;
+    letter-spacing: -0.1rem;
+  }
+
+  h2 {
+    color: white;
+    font-size: 5vw;
+    font-weight: 600;
+    padding: 5vw;
+  }
+
+  .center {
+    h1,
+    h2,
+    h3,
+    h4,
+    h5 {
+      margin: auto;
+      width: 50%;
+      padding: 10px;
+      text-align: center;
+    }
+  }
+
+  .form-line {
+    margin-top: 2vw;
+    padding-top: 1vw;
+
+    input[type='text'] {
+      display: block;
+      margin: 0 auto;
+      border-radius: 1vw;
+      outline: 0.2vw solid rgb(28, 77, 225);
+      font-size: 2vw !important;
+      padding: 1vw;
+      background-color: #bddcfe;
+      caret-color: blue;
+      transition: 1.5s cubic-bezier(0.21, 0.04, 0.26, 0.99);
+    }
+
+    input[type='text']:focus {
+      border-color: rgb(237, 120, 120);
+    }
+
+    input[type='text']::selection {
+      background-color: rgb(249, 235, 193);
+      color: white;
+    }
+    .input-container {
+      position: relative;
+    }
+
+    .input-container input[type='text'] {
+      padding-right: 12vw;
+    }
+
+    .btn {
+      margin: 0 auto;
+      width: 10vw;
+      height: 7vw;
+      outline: 0;
+      border-width: 0.3vw;
+      cursor: pointer;
+      overflow: hidden;
+      position: relative;
+      display: flex;
+      justify-content: space-between;
+      box-shadow: 0px 3px 25px rgba(0, 0, 0, 0.05);
+      transition: 1.5s cubic-bezier(0.21, 0.04, 0.26, 0.99);
+
+      .btn-content {
+        margin: auto;
+        transition: transform 0.1s ease;
+        display: inline-block;
+      }
+
+      .btn-icon {
+        margin: auto;
+        transition: transform 0.1s ease;
+        display: inline-block;
+        transition: 3s cubic-bezier(0.21, 0.04, 0.26, 0.99);
+        transform: rotate(-90deg);
+        width: '100%';
+
+        svg {
+          width: 60%;
+          height: 60%;
+        }
+      }
+
+      &.btn-register {
+        font-size: 1.2vw;
+        font-weight: 300;
+        border-radius: 10px;
+        background: #fff;
+        transition: 1.5s cubic-bezier(0.21, 0.04, 0.26, 0.99);
+      }
+
+      &.registered .btn-content--default,
+      .btn--icon-registered {
+        opacity: 0;
+        position: absolute;
+      }
+
+      .btn-content--default,
+      &.registered .btn--icon-registered {
+        opacity: 1;
+        transform: rotate(0deg);
+        position: relative;
+      }
+
+      &.registered .btn-content {
+        color: var(--white);
+      }
+
+      &.registered.btn-register {
+        background: var(--gray);
+        border-color: var(--gray);
+      }
+    }
+
+    // .btn:hover {
+    //   box-shadow: 0px 3px 25px rgba(0, 0, 0, 0.2);
+    //   border-color: var(--red);
+    // }
+
+    // .btn:hover .btn-icon {
+    //   color: var(--red);
+    // }
+    // .btn.registered:hover .btn-icon {
+    //   color: var(--blue);
+    // }
+  }
+}

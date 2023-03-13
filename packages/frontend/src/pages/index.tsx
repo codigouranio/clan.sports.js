@@ -1,78 +1,57 @@
-import { InputButton, Navbar } from '@/components/molecules';
-import { gradientClan } from '@/styles/theme';
-import { Box, Flex, Heading, Text } from '@chakra-ui/react';
+import { Parallax, ParallaxLayer } from '@react-spring/parallax';
+import { useScroll } from 'framer-motion';
 import type { NextPage } from 'next';
-import Image from 'next/image';
-
-import imageHeader from '../../public/image-header.jpg';
-
-/* 
-  TODO:x Optimization the image for header
-       x Icons the Git, Discord in navbar
-       x Create Icons components
-       x Divide the page by components
-       x Create background color gradient
-       x Create Navbar styles 
-       - Mobile styles
-       - Create toogle dark mode and theme dark
-       - Create more information section
-       - Create project plannig
-       - Realize contributor section
-*/
 
 const Home: NextPage = () => {
+  const { scrollYProgress } = useScroll();
+  const squareVariants = {
+    initial: { scale: 3 },
+    visible: { opacity: 1, scale: 1, transition: { duration: 2 }, rotate: -10 },
+    hidden: { opacity: 0, scale: -1 },
+  };
+
   return (
-    <>
-      <Box paddingTop="120px" height="1000px">
-        <Navbar />
-        <Flex
-          as="header"
-          maxW="1020px"
-          justifyContent="space-between"
-          alignItems="center"
-          margin="0 auto"
-        >
-          <Box maxW="45%" marginTop="1rem" textAlign="center">
-            <Heading
-              as="h2"
-              fontSize="5xl"
-              color="gray.50"
-              bgGradient={gradientClan}
-              bgClip="text"
-            >
-              Connecting the next generation of geniuses
-            </Heading>
-
-            <Text fontSize="lg" marginTop="1rem" color="gray.900">
-              Clan Sports will be social plataform to link young people with
-              extracurricular activity instrutions.
-            </Text>
-
-            <Box marginTop="5rem">
-              <Text fontSize="lg" marginTop="1rem" color="gray.900">
-                Lorem ipsum dolor sit amet, qui minim labore adipisicing minim
-                sint cillum sint consectetur cupidatat.
-              </Text>
-
-              <InputButton content="Join Waitlist" placeholder="E-mail" />
-            </Box>
-          </Box>
-
-          <Box maxW="60%">
-            <Image
-              src={imageHeader}
-              alt="Image Header"
-              width={500}
-              height={500}
-            />
-          </Box>
-        </Flex>
-      </Box>
-
-      <Box>
-        <Heading as="h2"> Seccion information</Heading>
-      </Box>
-    </>
+    <Parallax pages={9} className="main">
+      <ParallaxLayer className="logo">
+        <h1>CLAN</h1>
+        <h2>sports</h2>
+      </ParallaxLayer>
+      <ParallaxLayer
+        className="section"
+        offset={1}
+        speed={1.5}
+        sticky={{ start: 1, end: 2 }}
+      >
+        <h2>Where sports achievements live on forever.</h2>
+      </ParallaxLayer>
+      <ParallaxLayer
+        className="section"
+        offset={2}
+        speed={1.5}
+        sticky={{ start: 3, end: 4 }}
+      >
+        <h2>Making it easy to track their sports success.</h2>
+      </ParallaxLayer>
+      <ParallaxLayer
+        className="section"
+        offset={3}
+        sticky={{ start: 5, end: 6 }}
+      >
+        <h2>Record their journey to greatness.</h2>
+        <p>A lifetime of achievements, all in one place.</p>
+      </ParallaxLayer>
+      <ParallaxLayer
+        className="section"
+        offset={5}
+        speed={1.5}
+        sticky={{ start: 7, end: 8 }}
+      >
+        <p>Helping young athletes reach their full potential.</p>
+      </ParallaxLayer>
+      <ParallaxLayer offset={8} className="section">
+        <p>Join us!</p>
+      </ParallaxLayer>
+    </Parallax>
   );
 };
 export default Home;

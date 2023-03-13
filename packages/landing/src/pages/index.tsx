@@ -1,13 +1,6 @@
-import { Button, ButtonGroup } from '@chakra-ui/react';
+import { CheckIcon } from '@chakra-ui/icons';
 import { IParallax, Parallax, ParallaxLayer } from '@react-spring/parallax';
-import {
-  motion,
-  transform,
-  useMotionValue,
-  useScroll,
-  useSpring,
-  useTransform,
-} from 'framer-motion';
+import { motion, useMotionValue, useTransform } from 'framer-motion';
 import * as _ from 'lodash';
 import type { NextPage } from 'next';
 import Image from 'next/image';
@@ -15,6 +8,8 @@ import { useEffect, useRef, useState } from 'react';
 
 const Home: NextPage = () => {
   const parallax = useRef<IParallax>(null);
+  // const buttonRegister = createRef<HTMLButtonElement>();
+  const [buttonRegister, setButtonRegister] = useState<HTMLButtonElement>();
 
   const scrollYProgress = useMotionValue(0);
 
@@ -28,54 +23,22 @@ const Home: NextPage = () => {
   };
 
   useEffect(() => {
-    if (!parallax.current || !parallax.current.container) return;
-    parallax.current.container.current.onclick = () => console.log('hola');
-    parallax.current.container.current.onscroll = onScroll;
+    if (
+      parallax?.current?.container?.current &&
+      !parallax?.current?.container?.current?.onScroll
+    ) {
+      parallax.current.container.current.onscroll = onScroll;
+    }
+
+    buttonRegister &&
+      buttonRegister.addEventListener('click', (event: any) => {
+        buttonRegister.classList.add('registered');
+      });
   });
 
   return (
     <>
-      <Parallax pages={4} className="main" ref={parallax}>
-        {/* 
-        <ParallaxLayer
-          offset={5}
-          speed={-0.4}
-          style={{
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            pointerEvents: 'none',
-          }}
-        >
-          <Image
-            src={'/chicas.svg'}
-            style={{ height: '60%', width: '60%' }}
-            width={100}
-            height={200}
-            alt="chicas"
-          />
-        </ParallaxLayer>
-
-
-        <ParallaxLayer
-          offset={8}
-          speed={-0.4}
-          style={{
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            pointerEvents: 'none',
-          }}
-        >
-          <Image
-            src={'/fans.svg'}
-            style={{ height: '60%', width: '60%' }}
-            width={100}
-            height={200}
-            alt="fans"
-          />
-        </ParallaxLayer> */}
-
+      <Parallax pages={5} className="main" ref={parallax}>
         <ParallaxLayer className="logo" offset={0}>
           <motion.div
             initial={{ scale: 10, opacity: 0 }}
@@ -132,49 +95,54 @@ const Home: NextPage = () => {
             pointerEvents: 'none',
           }}
           sticky={{ start: 2, end: 3 }}
+          className="section-image"
         >
           <Image
             src={'/pistas.svg'}
-            style={{ height: '100%', width: '100%' }}
+            style={{ height: '100%', width: '100%', opacity: 0.6 }}
             width={100}
             height={200}
             alt="pistas"
           />
         </ParallaxLayer>
 
-        <ParallaxLayer
-          className="section"
-          offset={2}
-          speed={1}
-          style={{ zIndex: '900' }}
-        >
-          <h1 style={{ zIndex: '900' }}>
-            Helping young athletes reach their full potential.
-          </h1>
+        <ParallaxLayer className="section" offset={2} speed={1}>
+          <h1>Helping young athletes reach their full potential.</h1>
           <h2>and making it easy to track their sports success.</h2>
         </ParallaxLayer>
-        <ParallaxLayer className="section" offset={3} speed={1}>
+        <ParallaxLayer className="section" offset={3} speed={0.5}>
           <h1>Record their journey to greatness.</h1>
           <h2>A lifetime of achievements, all in one place.</h2>
         </ParallaxLayer>
-
-        {/* 
-
-        <ParallaxLayer
-          className="section"
-          offset={5}
-          speed={1.5}
-          sticky={{ start: 7, end: 8 }}
-        >
-          <h1>Helping young athletes reach their full potential.</h1>
-          <p>Join us!</p>
+        <ParallaxLayer className="section" offset={4} speed={1.25}>
+          <div className="center">
+            <h1>Join us!</h1>
+          </div>
+          <div className="form-line">
+            <div className="input-container">
+              <input
+                placeholder="Your email"
+                type="text"
+                autoComplete="email"
+              />
+            </div>
+          </div>
+          <div className="form-line">
+            <button
+              className="btn btn-register"
+              ref={_.debounce(
+                (ref: any) => ref && setButtonRegister(ref),
+                2000,
+                { leading: false },
+              )}
+            >
+              <span className="btn-content btn-content--default">Register</span>
+              <span className="btn-icon btn--icon-registered">
+                <CheckIcon />
+              </span>
+            </button>
+          </div>
         </ParallaxLayer>
-        <ParallaxLayer
-          className="section"
-          offset={8}
-          speed={1.5}
-          sticky={{ start: 8, end: 10 }}
-        ></ParallaxLayer> */}
       </Parallax>
     </>
   );

@@ -5,11 +5,11 @@ RUN apk update && apk upgrade
 WORKDIR /home/node/app/
 
 FROM base AS dependencies
-COPY ./packages/frontend/package.json .
+COPY ./packages/landing/package.json .
 RUN npm i --no-scripts
 
 FROM base as build
-COPY ./packages/frontend .
+COPY ./packages/landing .
 COPY --from=dependencies /home/node/app/node_modules ./node_modules
 RUN npm run build
 

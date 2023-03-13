@@ -1,0 +1,31 @@
+
+<svg width="328px" height="193px" viewBox="346 487 328 193" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 42 (36781) - http://www.bohemiancoding.com/sketch -->
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="client-copy" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" transform="translate(346.000000, 487.000000)">
+        <rect id="Rectangle-5" fill="#D8D8D8" x="0" y="0" width="328" height="193" rx="8"></rect>
+        <path d="M0,25.5441176 L328,25.5441176 L328,185.007812 C328,189.421775 324.428194,193 319.993845,193 L8.00615545,193 C3.58447789,193 0,189.424975 0,185.007812 L0,25.5441176 Z" id="Rectangle-6" fill="#FFFFFF"></path>
+        <g id="dots" transform="translate(8.519481, 8.514706)">
+            <ellipse id="red" fill="#FF483F" cx="5.67965368" cy="5.67647059" rx="5.67965368" ry="5.67647059"></ellipse>
+            <ellipse id="yellow" fill="#ECBB38" cx="22.7186147" cy="5.67647059" rx="5.67965368" ry="5.67647059"></ellipse>
+            <ellipse id="green" fill="#36D3A8" cx="39.7575758" cy="5.67647059" rx="5.67965368" ry="5.67647059"></ellipse>
+        </g>
+        <g id="ui" transform="translate(12.000000, 33.000000)">
+            <rect id="Rectangle-10" fill="#DAE9FF" x="0" y="23.2226562" width="75" height="11.2883936" rx="4"></rect>
+            <rect id="Rectangle-10-Copy-5" fill="#F0F0F0" x="229" y="82.2696383" width="75" height="11.2883936" rx="4"></rect>
+            <rect id="Rectangle-10-Copy-4" fill="#F0F0F0" x="229" y="65.7712168" width="75" height="11.2883936" rx="4"></rect>
+            <rect id="Rectangle-10-Copy-3" fill="#F0F0F0" x="229" y="2" width="75" height="58.561189" rx="4"></rect>
+            <rect id="Rectangle-10-Copy" fill="#F0F0F0" x="0" y="38.8527397" width="75" height="11.2883936" rx="4"></rect>
+            <rect id="Rectangle-10-Copy-2" fill="#F0F0F0" x="0" y="54.4828232" width="75" height="11.2883936" rx="4"></rect>
+            <rect id="Rectangle-10-Copy-6" fill="#F0F0F0" x="0" y="139" width="12" height="11.2883936" rx="4"></rect>
+            <rect id="Rectangle-10-Copy-8" fill="#F0F0F0" x="0" y="2" width="12" height="11.2883936" rx="4"></rect>
+            <rect id="Rectangle-10-Copy-9" fill="#F0F0F0" x="18" y="2" width="37" height="11.2883936" rx="4"></rect>
+            <rect id="Rectangle-10-Copy-10" fill="#F0F0F0" x="62" y="2" width="37" height="11.2883936" rx="4"></rect>
+            <rect id="Rectangle-10-Copy-7" fill="#D6FFB9" x="292" y="138.711606" width="12" height="11.2883936" rx="4"></rect>
+            <text id="+" font-family="HelveticaNeue-Bold, Helvetica Neue" font-size="10" font-weight="bold" fill="#B9B9B9">
+                <tspan x="3" y="10">+</tspan>
+            </text>
+        </g>
+    </g>
+</svg>

@@ -116,7 +116,7 @@ const Home: NextPage = () => {
         </ParallaxLayer>
         <ParallaxLayer className="section" offset={4} speed={1.25}>
           <div className="center">
-            <h1>Join us!</h1>
+            <h1 className="join-us">Join us!</h1>
           </div>
           <div className="form-line">
             <div className="input-container">
@@ -124,23 +124,23 @@ const Home: NextPage = () => {
                 placeholder="Your email"
                 type="text"
                 autoComplete="email"
-              />
+              />{' '}
+              <button
+                className="btn btn-register"
+                ref={_.debounce(
+                  (ref: any) => ref && setButtonRegister(ref),
+                  2000,
+                  { leading: false },
+                )}
+              >
+                <span className="btn-content btn-content--default">
+                  Register
+                </span>
+                <span className="btn-icon btn--icon-registered">
+                  <CheckIcon />
+                </span>
+              </button>
             </div>
-          </div>
-          <div className="form-line">
-            <button
-              className="btn btn-register"
-              ref={_.debounce(
-                (ref: any) => ref && setButtonRegister(ref),
-                2000,
-                { leading: false },
-              )}
-            >
-              <span className="btn-content btn-content--default">Register</span>
-              <span className="btn-icon btn--icon-registered">
-                <CheckIcon />
-              </span>
-            </button>
           </div>
         </ParallaxLayer>
       </Parallax>

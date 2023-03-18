@@ -109,115 +109,109 @@ body {
       padding: 10px;
       text-align: center;
     }
+
+    > .join-us {
+      margin-bottom: 5vw;
+    }
   }
 
   .form-line {
-    margin-top: 2vw;
-    padding-top: 1vw;
-
-    input[type='text'] {
-      display: block;
-      margin: 0 auto;
-      border-radius: 1vw;
-      outline: 0.2vw solid rgb(28, 77, 225);
-      font-size: 2vw !important;
-      padding: 1vw;
-      background-color: #bddcfe;
-      caret-color: blue;
-      transition: 1.5s cubic-bezier(0.21, 0.04, 0.26, 0.99);
-    }
-
-    input[type='text']:focus {
-      border-color: rgb(237, 120, 120);
-    }
-
-    input[type='text']::selection {
-      background-color: rgb(249, 235, 193);
-      color: white;
-    }
     .input-container {
-      position: relative;
-    }
-
-    .input-container input[type='text'] {
-      padding-right: 12vw;
-    }
-
-    .btn {
-      margin: 0 auto;
-      width: 10vw;
-      height: 7vw;
-      outline: 0;
-      border-width: 0.3vw;
-      cursor: pointer;
-      overflow: hidden;
-      position: relative;
       display: flex;
-      justify-content: space-between;
-      box-shadow: 0px 3px 25px rgba(0, 0, 0, 0.05);
-      transition: 1.5s cubic-bezier(0.21, 0.04, 0.26, 0.99);
+      align-items: center;
+      justify-content: center;
+      place-items: center;
+      background-color: #ffffff;
+      border-radius: 8px;
+      margin-left: 17vw;
+      margin-right: 17vw;
 
-      .btn-content {
-        margin: auto;
-        transition: transform 0.1s ease;
-        display: inline-block;
-      }
-
-      .btn-icon {
-        margin: auto;
-        transition: transform 0.1s ease;
-        display: inline-block;
-        transition: 3s cubic-bezier(0.21, 0.04, 0.26, 0.99);
-        transform: rotate(-90deg);
-        width: '100%';
-
-        svg {
-          width: 60%;
-          height: 60%;
-        }
-      }
-
-      &.btn-register {
-        font-size: 1.2vw;
-        font-weight: 300;
-        border-radius: 10px;
-        background: #fff;
+      input[type='text'] {
+        display: flex;
+        border-width: 0px;
+        font-size: 2vw !important;
+        background-color: transparent;
+        caret-color: blue;
         transition: 1.5s cubic-bezier(0.21, 0.04, 0.26, 0.99);
       }
 
-      &.registered .btn-content--default,
-      .btn--icon-registered {
-        opacity: 0;
-        position: absolute;
+      input[type='text']:focus {
+        border: 0px;
+        outline: none;
       }
 
-      .btn-content--default,
-      &.registered .btn--icon-registered {
-        opacity: 1;
-        transform: rotate(0deg);
+      input[type='text']::selection {
+        background-color: rgb(249, 235, 193);
+        color: white;
+        border: 0px;
+      }
+
+      .btn {
+        width: 10vw;
+        height: 7vw;
+        outline: none;
+        border-width: 0px;
+        cursor: pointer;
+        overflow: hidden;
         position: relative;
-      }
+        display: flex;
+        justify-content: space-between;
+        font-family: 'blinker', 'sans-serif';
+        font-size: 30em;
+        box-shadow: 0px 3px 25px rgba(0, 0, 0, 0.05);
+        padding: 2vw;
+        margin-left: 2em;
+        transition: 1.5s cubic-bezier(0.21, 0.04, 0.26, 0.99);
 
-      &.registered .btn-content {
-        color: var(--white);
-      }
+        .btn-content {
+          margin: auto;
+          transition: transform 0.1s ease;
+          display: inline-block;
+        }
 
-      &.registered.btn-register {
-        background: var(--gray);
-        border-color: var(--gray);
+        .btn-icon {
+          margin: auto;
+          transition: transform 0.1s ease;
+          display: inline-block;
+          transition: 3s cubic-bezier(0.21, 0.04, 0.26, 0.99);
+          transform: rotate(-90deg);
+          width: '100%';
+
+          svg {
+            width: 60%;
+            height: 60%;
+          }
+        }
+
+        &.btn-register {
+          font-size: 1.2vw;
+          font-weight: 300;
+          background: #fff;
+          transition: 1.5s cubic-bezier(0.21, 0.04, 0.26, 0.99);
+        }
+
+        &.registered .btn-content--default,
+        .btn--icon-registered {
+          opacity: 0;
+          position: absolute;
+        }
+
+        .btn-content--default,
+        &.registered .btn--icon-registered {
+          opacity: 1;
+          transform: rotate(0deg);
+          position: relative;
+        }
+
+        &.registered .btn-content {
+          color: var(--white);
+        }
+
+        &.registered.btn-register {
+          background: var(--gray);
+          border-color: var(--gray);
+        }
       }
     }
-
-    // .btn:hover {
-    //   box-shadow: 0px 3px 25px rgba(0, 0, 0, 0.2);
-    //   border-color: var(--red);
-    // }
-
-    // .btn:hover .btn-icon {
-    //   color: var(--red);
-    // }
-    // .btn.registered:hover .btn-icon {
-    //   color: var(--blue);
-    // }
   }
 }

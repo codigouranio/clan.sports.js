@@ -48,13 +48,13 @@ jobs:
           file: packages/services/.docker/Dockerfile
           push: true
           tags: codigouranio/clan-sports-services:latest
-      - name: Build and push frontend
+      - name: Build and push landing
         uses: docker/build-push-action@v4
         with:
           context: .
-          file: packages/frontend/.docker/Dockerfile
+          file: packages/landing/.docker/Dockerfile
           push: true
-          tags: codigouranio/clan-sports-frontend:latest
+          tags: codigouranio/clan-sports-landing:latest
       - name: Create deploy file
         env:
           CONTAINER_IMAGE_NAME: ${{ env.DOCKER_USERNAME }}/${{ env.SERVICE_NAME }}:latest

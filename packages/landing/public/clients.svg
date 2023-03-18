@@ -1,0 +1,26 @@
+
+<svg width="743px" height="136px" viewBox="138 516 743 136" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 42 (36781) - http://www.bohemiancoding.com/sketch -->
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="CLIENT" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" transform="translate(138.000000, 516.000000)">
+        <g id="client">
+            <rect id="Rectangle-5" fill="#D8D8D8" x="0" y="0" width="231" height="136" rx="8"></rect>
+            <path d="M0,18 L231,18 L231,128.005271 C231,132.420638 227.417901,136 222.998169,136 L8.00183095,136 C3.58254174,136 0,132.420222 0,128.005271 L0,18 Z" id="Rectangle-6" fill="#F4F4F4"></path>
+            <g id="dots" transform="translate(6.000000, 6.000000)">
+                <circle id="red" fill="#DF4E47" cx="4" cy="4" r="4"></circle>
+                <circle id="yellow" fill="#D1A839" cx="16" cy="4" r="4"></circle>
+                <circle id="green" fill="#34B18F" cx="28" cy="4" r="4"></circle>
+            </g>
+        </g>
+        <g id="client-copy-2" transform="translate(512.000000, 0.000000)">
+            <rect id="Rectangle-5" fill="#D8D8D8" x="0" y="0" width="231" height="136" rx="8"></rect>
+            <path d="M0,18 L231,18 L231,128.005271 C231,132.420638 227.417901,136 222.998169,136 L8.00183095,136 C3.58254174,136 0,132.420222 0,128.005271 L0,18 Z" id="Rectangle-6" fill="#F4F4F4"></path>
+            <g id="dots" transform="translate(6.000000, 6.000000)">
+                <circle id="red" fill="#DF4E47" cx="4" cy="4" r="4"></circle>
+                <circle id="yellow" fill="#D1A839" cx="16" cy="4" r="4"></circle>
+                <circle id="green" fill="#34B18F" cx="28" cy="4" r="4"></circle>
+            </g>
+        </g>
+    </g>
+</svg>

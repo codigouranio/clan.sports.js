@@ -6,8 +6,8 @@ services:
     restart: always
     ports:
       - '3001:3001'
-  clan-sports-frontend:
-    image: codigouranio/clan-sports-frontend
+  clan-sports-landing:
+    image: codigouranio/clan-sports-landing
     restart: always
     ports:
       - '80:3000'

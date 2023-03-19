@@ -111,7 +111,7 @@ body {
     }
 
     > .join-us {
-      margin-bottom: 5vw;
+      margin-bottom: 10vw;
     }
   }
 
@@ -122,9 +122,10 @@ body {
       justify-content: center;
       place-items: center;
       background-color: #ffffff;
-      border-radius: 8px;
-      margin-left: 17vw;
-      margin-right: 17vw;
+      border-radius: 0.3em;
+      margin-left: 16vw;
+      margin-right: 16vw;
+      gap: 1em;
 
       input[type='text'] {
         display: flex;
@@ -133,22 +134,21 @@ body {
         background-color: transparent;
         caret-color: blue;
         transition: 1.5s cubic-bezier(0.21, 0.04, 0.26, 0.99);
-      }
+        &:focus {
+          border: 0px;
+          outline: none;
+        }
 
-      input[type='text']:focus {
-        border: 0px;
-        outline: none;
-      }
-
-      input[type='text']::selection {
-        background-color: rgb(249, 235, 193);
-        color: white;
-        border: 0px;
+        &::selection {
+          background-color: rgb(249, 235, 193);
+          color: white;
+          border: 0px;
+        }
       }
 
       .btn {
         width: 10vw;
-        height: 7vw;
+        height: 5vw;
         outline: none;
         border-width: 0px;
         cursor: pointer;
@@ -158,9 +158,11 @@ body {
         justify-content: space-between;
         font-family: 'blinker', 'sans-serif';
         font-size: 30em;
-        box-shadow: 0px 3px 25px rgba(0, 0, 0, 0.05);
-        padding: 2vw;
+        box-shadow: 0px 3px 25px rgba(0, 0, 0, 0.327);
+        border-radius: 1em;
         margin-left: 2em;
+        margin-top: 1em;
+        margin-bottom: 1em;
         transition: 1.5s cubic-bezier(0.21, 0.04, 0.26, 0.99);
 
         .btn-content {
@@ -178,15 +180,17 @@ body {
           width: '100%';
 
           svg {
-            width: 60%;
-            height: 60%;
+            width: 50%;
+            height: 50%;
           }
         }
 
         &.btn-register {
-          font-size: 1.2vw;
-          font-weight: 300;
-          background: #fff;
+          font-size: 1.5vw;
+          font-weight: 600;
+          background: #428cf5;
+          color: white;
+
           transition: 1.5s cubic-bezier(0.21, 0.04, 0.26, 0.99);
         }
 

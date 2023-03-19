@@ -94,7 +94,7 @@ const Home: NextPage = () => {
             justifyContent: 'center',
             pointerEvents: 'none',
           }}
-          sticky={{ start: 2, end: 3 }}
+          sticky={{ start: 2, end: 4 }}
           className="section-image"
         >
           <Image

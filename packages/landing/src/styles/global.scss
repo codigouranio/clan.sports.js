@@ -134,6 +134,7 @@ body {
         background-color: transparent;
         caret-color: blue;
         transition: 1.5s cubic-bezier(0.21, 0.04, 0.26, 0.99);
+
         &:focus {
           border: 0px;
           outline: none;

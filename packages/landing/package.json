@@ -1,5 +1,5 @@
 {
-  "name": "frontend",
+  "name": "landing",
   "private": true,
   "version": "1.0.1",
   "repository": {
@@ -52,7 +52,7 @@
   },
   "devDependencies": {
     "@babel/core": "^7.20.2",
-    "@chakra-ui/icons": "2.0.11",
+    "@chakra-ui/icons": "^2.0.11",
     "@storybook/addon-actions": "^6.5.13",
     "@storybook/addon-essentials": "^6.5.13",
     "@storybook/addon-interactions": "^6.5.13",

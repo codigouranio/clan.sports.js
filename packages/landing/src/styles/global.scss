@@ -1,0 +1,222 @@
+:root {
+  --red: rgb(255, 181, 180);
+  --white: #fff;
+  --black: #000;
+  --blue: #7676ff;
+  --gray: #8c8c8c;
+}
+
+body {
+  overflow-x: hidden;
+  margin: 0px;
+}
+
+.main {
+  justify-content: center;
+  font-size: 8vh;
+  background: linear-gradient(
+    180deg,
+    rgba(12, 165, 255, 1) 0%,
+    rgba(8, 126, 255, 1) 22%,
+    rgba(4, 74, 255, 1) 100%
+  );
+  .progress-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 10px;
+    background: rgba(0, 237, 255, 0.5972514005602241);
+    transform-origin: 0%;
+  }
+}
+
+.box {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  background: 'red' !important;
+}
+
+.logo {
+  font-family: 'blinker', 'sans-serif';
+  min-height: 120vw;
+  padding-top: 1vh;
+  margin-top: -5vw;
+  padding-top: 0vw;
+  font-size: 5vw;
+  z-index: 900;
+
+  h1 {
+    font-size: 25vw;
+    font-weight: 600;
+    letter-spacing: -0.1rem;
+    margin-bottom: -25px;
+    text-align: center;
+    background: radial-gradient(#ffffff, #a3c0e4);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  h2 {
+    // color: rgb(195, 195, 195);
+    background: linear-gradient(#eee, #bddcfe);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+    font-size: 7vw;
+    font-weight: 500;
+    margin-top: 0px;
+    text-align: center;
+  }
+}
+
+.section-image {
+  z-index: -1;
+}
+
+.section {
+  font-family: 'blinker', 'sans-serif';
+  min-height: 100vw;
+  padding: 5vw;
+  font-size: 5vw;
+  width: 80% !important;
+  z-index: 900;
+  text-shadow: 0 0 2px #888;
+
+  h1 {
+    color: white;
+    font-size: 7vw;
+    font-weight: 900;
+    letter-spacing: -0.1rem;
+  }
+
+  h2 {
+    color: white;
+    font-size: 5vw;
+    font-weight: 600;
+    padding: 5vw;
+  }
+
+  .center {
+    h1,
+    h2,
+    h3,
+    h4,
+    h5 {
+      margin: auto;
+      width: 50%;
+      padding: 10px;
+      text-align: center;
+    }
+
+    > .join-us {
+      margin-bottom: 10vw;
+    }
+  }
+
+  .form-line {
+    .input-container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      place-items: center;
+      background-color: #ffffff;
+      border-radius: 0.3em;
+      margin-left: 16vw;
+      margin-right: 16vw;
+      gap: 1em;
+
+      input[type='text'] {
+        display: flex;
+        border-width: 0px;
+        font-size: 2vw !important;
+        background-color: transparent;
+        caret-color: blue;
+        transition: 1.5s cubic-bezier(0.21, 0.04, 0.26, 0.99);
+
+        &:focus {
+          border: 0px;
+          outline: none;
+        }
+
+        &::selection {
+          background-color: rgb(249, 235, 193);
+          color: white;
+          border: 0px;
+        }
+      }
+
+      .btn {
+        width: 10vw;
+        height: 5vw;
+        outline: none;
+        border-width: 0px;
+        cursor: pointer;
+        overflow: hidden;
+        position: relative;
+        display: flex;
+        justify-content: space-between;
+        font-family: 'blinker', 'sans-serif';
+        font-size: 30em;
+        box-shadow: 0px 3px 25px rgba(0, 0, 0, 0.327);
+        border-radius: 1em;
+        margin-left: 2em;
+        margin-top: 1em;
+        margin-bottom: 1em;
+        transition: 1.5s cubic-bezier(0.21, 0.04, 0.26, 0.99);
+
+        .btn-content {
+          margin: auto;
+          transition: transform 0.1s ease;
+          display: inline-block;
+        }
+
+        .btn-icon {
+          margin: auto;
+          transition: transform 0.1s ease;
+          display: inline-block;
+          transition: 3s cubic-bezier(0.21, 0.04, 0.26, 0.99);
+          transform: rotate(-90deg);
+          width: '100%';
+
+          svg {
+            width: 50%;
+            height: 50%;
+          }
+        }
+
+        &.btn-register {
+          font-size: 1.5vw;
+          font-weight: 600;
+          background: #428cf5;
+          color: white;
+
+          transition: 1.5s cubic-bezier(0.21, 0.04, 0.26, 0.99);
+        }
+
+        &.registered .btn-content--default,
+        .btn--icon-registered {
+          opacity: 0;
+          position: absolute;
+        }
+
+        .btn-content--default,
+        &.registered .btn--icon-registered {
+          opacity: 1;
+          transform: rotate(0deg);
+          position: relative;
+        }
+
+        &.registered .btn-content {
+          color: var(--white);
+        }
+
+        &.registered.btn-register {
+          background: var(--gray);
+          border-color: var(--gray);
+        }
+      }
+    }
+  }
+}

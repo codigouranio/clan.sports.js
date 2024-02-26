@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Let Me In!</title>
+    <!-- Bundle -->
+    <script src="js/bundle.js"></script>
+    <link rel="stylesheet" href="css/foundation.css" />
+    <link rel="stylesheet" href="css/app.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body class="pt-sans-regular">
+    <div id="request_code" class="login-form">
+      <div class="form-group">
+        <form id="login" onsubmit="process(event)">
+          <p>Enter your phone number:</p>
+          <input id="phone" type="tel" name="phone" />
+        </form>
+        <div class="alert alert-info" style="display: none"></div>
+      </div>
+      <button id="request_code_button">Check Code</button>
+    </div>
+    <div id="check_node" class="login-form hide">
+      <div class="form-group">
+        <form id="login" onsubmit="process(event)">
+          <p>Enter the code:</p>
+        </form>
+        <div id="code-inputs">
+          <input class="code-input" type="text" id="digit1" maxlength="1" />
+          <input class="code-input" type="text" id="digit2" maxlength="1" />
+          <input class="code-input" type="text" id="digit3" maxlength="1" />
+          <input class="code-input" type="text" id="digit4" maxlength="1" />
+          <input class="code-input" type="text" id="digit5" maxlength="1" />
+          <input class="code-input" type="text" id="digit6" maxlength="1" />
+        </div>
+      </div>
+      <button id="check_code_button">Check Code</button>
+    </div>
+  </body>
+</html>

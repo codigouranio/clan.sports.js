@@ -1,0 +1,18 @@
+{
+  "name": "home",
+  "version": "1.0.0",
+  "scripts": {
+    "build": "webpack"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "intl-tel-input": "^19.4.0",
+    "jquery": "^3.7.1",
+    "lodash": "^4.17.21",
+    "ts-loader": "^9.5.1",
+    "webpack": "^5.90.3"
+  },
+  "devDependencies": {
+    "webpack-cli": "^5.1.4"
+  }
+}
